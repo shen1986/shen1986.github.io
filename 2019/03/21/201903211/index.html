@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="小沈的个人博客">
 <meta property="og:description" content="原文链接：https://www.williamlong.info/adsense/ Google AdSense 是一种获取收入的快速简便的方法，适合于各种规模的网站发布商。它可以在网站的内容网页上展示相关性较高的 Google 广告，并且这些广告不会过分夸张醒目。由于所展示的广告同用户在您的网站上查找的内容相关，因此，最终您的内容网页不仅会为您带来经济效益，还能够得以充实。 一、注册Googl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T09:51:47.506Z">
+<meta property="og:updated_time" content="2019-03-22T02:28:56.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Adsense(谷歌网站联盟)广告申请指南">
 <meta name="twitter:description" content="原文链接：https://www.williamlong.info/adsense/ Google AdSense 是一种获取收入的快速简便的方法，适合于各种规模的网站发布商。它可以在网站的内容网页上展示相关性较高的 Google 广告，并且这些广告不会过分夸张醒目。由于所展示的广告同用户在您的网站上查找的内容相关，因此，最终您的内容网页不仅会为您带来经济效益，还能够得以充实。 一、注册Googl">
@@ -255,7 +255,7 @@
 
 
 
-    <a data-url="http://shenxf.top/2019/03/21/201903211/" data-id="cjtjfms8z000470u06iv67bxd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://shenxf.top/2019/03/21/201903211/" data-id="cjtjgbp0v0001lsu002187qp1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -331,7 +331,7 @@
         "genre": "网站开发 Google广告",
         "datePublished": "2019-03-21",
         "dateCreated": "2019-03-21",
-        "dateModified": "2019-03-21",
+        "dateModified": "2019-03-22",
         "url": "http://shenxf.top/2019/03/21/201903211/",
         "description": "原文链接：https://www.williamlong.info/adsense/
 Google AdSense 是一种获取收入的快速简便的方法，适合于各种规模的网站发布商。它可以在网站的内容网页上展示相关性较高的 Google 广告，并且这些广告不会过分夸张醒目。由于所展示的广告同用户在您的网站上查找的内容相关，因此，最终您的内容网页不仅会为您带来经济效益，还能够得以充实。
@@ -341,21 +341,21 @@ Google AdSense 是一种获取收入的快速简便的方法，适合于各种�
 </script>
 
 </article>
+<span id="/2019/03/21/201903211/" class="leancloud_visitors" data-flag-title="Google Adsense(谷歌网站联盟)广告申请指南">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">1000000</i>:次
+</span>
 
     <section id="comments">
+        <h1>true</h1>
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <div id="valine-thread"></div>
+
 
     
     </section>
 
-
-阅读数量:<span id="/2019/03/21/201903211/" class="leancloud_visitors" data-flag-title="Google Adsense(谷歌网站联盟)广告申请指南"></span>次
-
-    <div id="valine-thread"></div>
 
 
                         </div>
@@ -521,62 +521,25 @@ Google AdSense 是一种获取收入的快速简便的方法，适合于各种�
         </div>
     </div>
 </footer>
-<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script>
-    var APP_ID = 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz';
-    var APP_KEY = '3J8p17IdN2HDN1U0zyUMeUj6';
-    AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-    });
-    // 显示次数
-    function showTime(Counter) {
-        var query = new AV.Query("Counter");
-        if($(".leancloud_visitors").length > 0){
-            var url = $(".leancloud_visitors").attr('id').trim();
-            // where field
-            query.equalTo("words", url);
-            // count
-            query.count().then(function (number) {
-                // There are number instances of MyClass where words equals url.
-                $(document.getElementById(url)).text(number?  number : '--');
-            }, function (error) {
-                // error is an instance of AVError.
-            });
-        }
-    }
-    // 追加pv
-    function addCount(Counter) {
-        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {
-        })
-    }
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        addCount(Counter);
-        showTime(Counter);
-    });
-</script>
         
     
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://shenxf.top/2019/03/21/201903211/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: '',
+            avatar_cdn:  '',
+            visitor: true
+        });
     </script>
+
 
 
 

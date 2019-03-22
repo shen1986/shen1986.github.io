@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="小沈的个人博客">
 <meta property="og:description" content="我的联系方式 QQ: 185693240 邮箱: shenxf1986@qq.com 地点: 上海 擅长: 前端 nodejs,react,vue,angular java    欢迎大家给我留言">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T06:55:28.679Z">
+<meta property="og:updated_time" content="2019-03-22T02:28:52.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我">
 <meta name="twitter:description" content="我的联系方式 QQ: 185693240 邮箱: shenxf1986@qq.com 地点: 上海 擅长: 前端 nodejs,react,vue,angular java    欢迎大家给我留言">
@@ -187,7 +187,7 @@
 
 
 
-    <a data-url="http://shenxf.top/about/index.html" data-id="cjtjfms8z000170u09v69bfyk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://shenxf.top/about/index.html" data-id="cjtjgbp3b000rlsu0p7vcqcsy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -263,7 +263,7 @@
         
         "datePublished": "2019-03-04",
         "dateCreated": "2019-03-04",
-        "dateModified": "2019-03-21",
+        "dateModified": "2019-03-22",
         "url": "http://shenxf.top/about/index.html",
         "description": "我的联系方式
 QQ: 185693240
@@ -281,21 +281,21 @@ java
 </script>
 
 </article>
+<span id="/about/index.html" class="leancloud_visitors" data-flag-title="关于我">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">1000000</i>:次
+</span>
 
     <section id="comments">
+        <h1>true</h1>
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <div id="valine-thread"></div>
+
 
     
     </section>
 
-
-阅读数量:<span id="/about/index.html" class="leancloud_visitors" data-flag-title="关于我"></span>次
-
-    <div id="valine-thread"></div>
 
 
                         </div>
@@ -448,62 +448,25 @@ java
         </div>
     </div>
 </footer>
-<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script>
-    var APP_ID = 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz';
-    var APP_KEY = '3J8p17IdN2HDN1U0zyUMeUj6';
-    AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-    });
-    // 显示次数
-    function showTime(Counter) {
-        var query = new AV.Query("Counter");
-        if($(".leancloud_visitors").length > 0){
-            var url = $(".leancloud_visitors").attr('id').trim();
-            // where field
-            query.equalTo("words", url);
-            // count
-            query.count().then(function (number) {
-                // There are number instances of MyClass where words equals url.
-                $(document.getElementById(url)).text(number?  number : '--');
-            }, function (error) {
-                // error is an instance of AVError.
-            });
-        }
-    }
-    // 追加pv
-    function addCount(Counter) {
-        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {
-        })
-    }
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        addCount(Counter);
-        showTime(Counter);
-    });
-</script>
         
     
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://shenxf.top/about/index.html';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: '',
+            avatar_cdn:  '',
+            visitor: true
+        });
     </script>
+
 
 
 
