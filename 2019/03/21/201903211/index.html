@@ -50,6 +50,7 @@
     
 
 
+    <link rel="stylesheet" href="/live2d/css/live2d.css">
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -470,7 +471,12 @@ Google AdSense 是一种获取收入的快速简便的方法，适合于各种�
                 </div>
             </div>
         </div>
-        <footer id="footer">
+        <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity: 0.8"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<footer id="footer">
     <div class="container">
         <div class="container-inner">
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
@@ -495,6 +501,15 @@ Google AdSense 是一种获取收入的快速简便的方法，适合于各种�
         </div>
     </div>
 </footer>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http:/shenxf.top/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
+</script>
         
     
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
