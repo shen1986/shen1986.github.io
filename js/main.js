@@ -133,23 +133,56 @@
         }
     });
 
-    dragPanelMove("#landlord","#landlord");
-    function dragPanelMove(downDiv,moveDiv){
-        $(downDiv).mousedown(function (e) {
-                var isMove = true;
-                var div_x = e.pageX - $(moveDiv).offset().left;
-                var div_y = e.pageY - $(moveDiv).offset().top;
-                $(document).mousemove(function (e) {
-                    if (isMove) {
-                        var obj = $(moveDiv);
-                        obj.css({"left":e.pageX - div_x, "top":e.pageY - div_y});
-                    }
-                }).mouseup(
-                    function () {
-                    isMove = false;
-                });
-        });
 
-    }
+    var bool=false; //标识是否移动元素
+    var offsetX=0; //声明p在当前窗口的Left值
+    var offsetY=0; //声明p在当前窗口的Top值
+    $("#landlord").mouseover(function(){
+        $(this).css('cursor','move');
+    })
 
+    $("#landlord").mousedown(function(){ 
+        bool=true;
+        offsetX = event.offsetX;
+        offsetY = event.offsetY;
+
+        //获取鼠在当前窗口的相对偏移位置的Top值并赋值给offsetY
+        $(this).css('cursor','move');
+
+    }).mouseup(function(){
+
+        bool=false;
+        //当鼠标在移动元素起来的时候将bool设定为false
+
+    })
+
+    $(document).mousemove(function(){
+        if(!bool)//如果bool为false则返回
+
+        return;
+        //当bool为true的时候执行下面的代码
+
+        var x = event.clientX-offsetX;
+
+        //event.clientX得到鼠标相对于客户端正文区域的偏移
+
+        //然后减去offsetX即得到当前推拽元素相对于当前窗口的X值
+
+        //（减去鼠标刚开始拖动的时候在当前窗口的偏移X）
+
+        var y = event.clientY-offsetY;
+
+        //event.clientY得到鼠标相对于客户端正文区域的偏移
+
+        //然后减去offsetX即得到当前推拽元素相对于当前窗口的Y值
+
+        //（减去鼠标刚开始拖动的时候在当前窗口的偏移Y）
+
+        $("#landlord").css("left", x);
+
+        $("#landlord").css("top", y);
+
+        $("#landlord").css('cursor','move');
+
+    })
 })(jQuery);
