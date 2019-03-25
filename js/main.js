@@ -1,3 +1,8 @@
+/*
+ * @Description: 
+ * @Author: shenxf
+ * @Date: 2019-03-04 13:52:11
+ */
 (function ($) {
     // To top button
     $("#back-to-top").on('click', function () {
@@ -179,10 +184,18 @@
         //（减去鼠标刚开始拖动的时候在当前窗口的偏移Y）
 
         $("#landlord").css("left", x);
+        localStorage.setItem('live2dleft', x);
 
         $("#landlord").css("top", y);
+        localStorage.setItem('live2dtop', y);
 
         $("#landlord").css('cursor','move');
 
     })
+
+    $('#showLive2d').on('click', function() {
+        localStorage.setItem('live2dDisplay','');
+        $('#landlord').css('display', '')
+        initLive2d();
+    });
 })(jQuery);

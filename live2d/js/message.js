@@ -1,3 +1,8 @@
+/*
+ * @Description: 
+ * @Author: shenxf
+ * @Date: 2019-03-22 14:32:14
+ */
 function renderTip(template, context) {
     var tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
     return template.replace(tokenReg, function (word, slash1, token, slash2) {
@@ -125,8 +130,18 @@ function hideMessage(timeout){
 }
 
 function initLive2d (){
+    var live2dDisplay = localStorage.getItem('live2dDisplay');
+    if (live2dDisplay === 'none') {
+        $('#landlord').css('display', 'none')
+        return false;
+    }
+
+    $("#landlord").css("left", parseInt(localStorage.getItem('live2dleft')));
+    $("#landlord").css("top", parseInt(localStorage.getItem('live2dtop')));
+
     $('.hide-button').fadeOut(0).on('click', () => {
         $('#landlord').css('display', 'none')
+        localStorage.setItem('live2dDisplay','none');
     })
     $('#landlord').hover(() => {
         $('.hide-button').fadeIn(600)
@@ -134,4 +149,5 @@ function initLive2d (){
         $('.hide-button').fadeOut(600)
     })
 }
+
 initLive2d ();
