@@ -17,18 +17,18 @@
     
         <meta name="keywords" content="git,命令,commond">
     
-    <meta name="description" content="分支操作1、git branch：创建分支2、git branch -b：创建并切换到新建的分支上3、git checkout：切换分支4、git branch：查看分支列表5、git branch -v：查看所有分支的最后一次操作6、git branch -vv：查看当前分支7、git brabch -b 分支名 origin/分支名：创建远程分支到本地8、git branch –merged：">
+    <meta name="description" content="分支操作 git branch：创建分支 git branch -b：创建并切换到新建的分支上 git checkout：切换分支 git branch：查看分支列表 git branch -v：查看所有分支的最后一次操作 git branch -vv：查看当前分支 git brabch -b 分支名 origin/分支名：创建远程分支到本地 git branch –merged：查看别的分支和当">
 <meta name="keywords" content="git,命令,commond">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中 99% 能用到的 git 命令">
 <meta property="og:url" content="http://shenxf.top/2019/04/01/20190401-gitCommand/index.html">
 <meta property="og:site_name" content="小沈的个人博客">
-<meta property="og:description" content="分支操作1、git branch：创建分支2、git branch -b：创建并切换到新建的分支上3、git checkout：切换分支4、git branch：查看分支列表5、git branch -v：查看所有分支的最后一次操作6、git branch -vv：查看当前分支7、git brabch -b 分支名 origin/分支名：创建远程分支到本地8、git branch –merged：">
+<meta property="og:description" content="分支操作 git branch：创建分支 git branch -b：创建并切换到新建的分支上 git checkout：切换分支 git branch：查看分支列表 git branch -v：查看所有分支的最后一次操作 git branch -vv：查看当前分支 git brabch -b 分支名 origin/分支名：创建远程分支到本地 git branch –merged：查看别的分支和当">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-01T04:46:26.032Z">
+<meta property="og:updated_time" content="2019-04-01T04:47:54.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中 99% 能用到的 git 命令">
-<meta name="twitter:description" content="分支操作1、git branch：创建分支2、git branch -b：创建并切换到新建的分支上3、git checkout：切换分支4、git branch：查看分支列表5、git branch -v：查看所有分支的最后一次操作6、git branch -vv：查看当前分支7、git brabch -b 分支名 origin/分支名：创建远程分支到本地8、git branch –merged：">
+<meta name="twitter:description" content="分支操作 git branch：创建分支 git branch -b：创建并切换到新建的分支上 git checkout：切换分支 git branch：查看分支列表 git branch -v：查看所有分支的最后一次操作 git branch -vv：查看当前分支 git brabch -b 分支名 origin/分支名：创建远程分支到本地 git branch –merged：查看别的分支和当">
     
 
     
@@ -212,15 +212,70 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><p>1、git branch：创建分支<br>2、git branch -b：创建并切换到新建的分支上<br>3、git checkout：切换分支<br>4、git branch：查看分支列表<br>5、git branch -v：查看所有分支的最后一次操作<br>6、git branch -vv：查看当前分支<br>7、git brabch -b 分支名 origin/分支名：创建远程分支到本地<br>8、git branch –merged：查看别的分支和当前分支合并过的分支<br>9、git branch –no-merged：查看未与当前分支合并的分支<br>10、git branch -d 分支名：删除本地分支<br>11、git branch -D 分支名：强行删除分支<br>12、git branch origin 分支名：删除远处仓库分支<br>13、git merge 分支名：合并分支到当前分支上</p>
-<h2 id="暂存操作"><a href="#暂存操作" class="headerlink" title="暂存操作"></a>暂存操作</h2><p>1、git stash：暂存当前修改<br>2、git stash apply：恢复最近的一次暂存<br>3、git stash pop：恢复暂存并删除暂存记录<br>4、git stash list：查看暂存列表<br>5、git stash drop 暂存名(例：stash@{0})：移除某次暂存<br>6、git stash clear：清除暂存</p>
-<h2 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h2><p>1、git reset –hard HEAD^：回退到上一个版本<br>2、git reset –hard ahdhs1(commit_id)：回退到某个版本<br>3、git checkout – file：撤销修改的文件（如果文件加入到了暂存区，则回退到暂存区的，如果文件加入到了版本库，则还原至加入版本库之后的状态）<br>4、git reset HEAD file：撤回暂存区的文件修改到工作区</p>
-<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><p>1、git tag 标签名：添加标签(默认对当前版本)<br>2、git tag 标签名 commit_id：对某一提交记录打标签<br>3、git tag -a 标签名 -m ‘描述’：创建新标签并增加备注<br>4、git tag：列出所有标签列表<br>5、git show 标签名：查看标签信息<br>6、git tag -d 标签名：删除本地标签<br>7、git push origin 标签名：推送标签到远程仓库<br>8、git push origin –tags：推送所有标签到远程仓库<br>9、git push origin :refs/tags/标签名：从远程仓库中删除标签</p>
-<h2 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h2><p>1、git push origin test：推送本地分支到远程仓库<br>2、git rm -r –cached 文件/文件夹名字：取消文件被版本控制<br>3、git reflog：获取执行过的命令<br>4、git log –graph：查看分支合并图<br>5、git merge –no-ff -m ‘合并描述’ 分支名：不使用Fast forward方式合并，采用这种方式合并可以看到合并记录<br>6、git check-ignore -v 文件名：查看忽略规则<br>7、git add -f 文件名：强制将文件提交</p>
-<h2 id="git创建项目仓库"><a href="#git创建项目仓库" class="headerlink" title="git创建项目仓库"></a>git创建项目仓库</h2><p>1、git init：初始化<br>2、git remote add origin url：关联远程仓库<br>3、git pull<br>4、git fetch：获取远程仓库中所有的分支到本地</p>
-<h2 id="忽略已加入到版本库中的文件"><a href="#忽略已加入到版本库中的文件" class="headerlink" title="忽略已加入到版本库中的文件"></a>忽略已加入到版本库中的文件</h2><p>git update-index –assume-unchanged file：忽略单个文件</p>
-<h2 id="取消忽略文件"><a href="#取消忽略文件" class="headerlink" title="取消忽略文件"></a>取消忽略文件</h2><p>git update-index –no-assume-unchanged file</p>
-<h2 id="拉取、上传免密码"><a href="#拉取、上传免密码" class="headerlink" title="拉取、上传免密码"></a>拉取、上传免密码</h2><p>git config –global credential.helper store</p>
+            <h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><ol>
+<li>git branch：创建分支</li>
+<li>git branch -b：创建并切换到新建的分支上</li>
+<li>git checkout：切换分支</li>
+<li>git branch：查看分支列表</li>
+<li>git branch -v：查看所有分支的最后一次操作</li>
+<li>git branch -vv：查看当前分支</li>
+<li>git brabch -b 分支名 origin/分支名：创建远程分支到本地</li>
+<li>git branch –merged：查看别的分支和当前分支合并过的分支</li>
+<li>git branch –no-merged：查看未与当前分支合并的分支</li>
+<li>git branch -d 分支名：删除本地分支</li>
+<li>git branch -D 分支名：强行删除分支</li>
+<li>git branch origin 分支名：删除远处仓库分支</li>
+<li>git merge 分支名：合并分支到当前分支上</li>
+</ol>
+<h2 id="暂存操作"><a href="#暂存操作" class="headerlink" title="暂存操作"></a>暂存操作</h2><ol>
+<li>git stash：暂存当前修改</li>
+<li>git stash apply：恢复最近的一次暂存</li>
+<li>git stash pop：恢复暂存并删除暂存记录</li>
+<li>git stash list：查看暂存列表</li>
+<li>git stash drop 暂存名(例：stash@{0})：移除某次暂存</li>
+<li>git stash clear：清除暂存</li>
+</ol>
+<h2 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h2><ol>
+<li>git reset –hard HEAD^：回退到上一个版本</li>
+<li>git reset –hard ahdhs1(commit_id)：回退到某个版本</li>
+<li>git checkout – file：撤销修改的文件（如果文件加入到了暂存区，则回退到暂存区的，如果文件加入到了版本库，则还原至加入版本库之后的状态）</li>
+<li>git reset HEAD file：撤回暂存区的文件修改到工作区</li>
+</ol>
+<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><ol>
+<li>git tag 标签名：添加标签(默认对当前版本)</li>
+<li>git tag 标签名 commit_id：对某一提交记录打标签</li>
+<li>git tag -a 标签名 -m ‘描述’：创建新标签并增加备注</li>
+<li>git tag：列出所有标签列表</li>
+<li>git show 标签名：查看标签信息</li>
+<li>git tag -d 标签名：删除本地标签</li>
+<li>git push origin 标签名：推送标签到远程仓库</li>
+<li>git push origin –tags：推送所有标签到远程仓库</li>
+<li>git push origin :refs/tags/标签名：从远程仓库中删除标签</li>
+</ol>
+<h2 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h2><ol>
+<li>git push origin test：推送本地分支到远程仓库</li>
+<li>git rm -r –cached 文件/文件夹名字：取消文件被版本控制</li>
+<li>git reflog：获取执行过的命令</li>
+<li>git log –graph：查看分支合并图</li>
+<li>git merge –no-ff -m ‘合并描述’ 分支名：不使用Fast forward方式合并，采用这种方式合并可以看到合并记录</li>
+<li>git check-ignore -v 文件名：查看忽略规则</li>
+<li>git add -f 文件名：强制将文件提交</li>
+</ol>
+<h2 id="git创建项目仓库"><a href="#git创建项目仓库" class="headerlink" title="git创建项目仓库"></a>git创建项目仓库</h2><ol>
+<li>git init：初始化</li>
+<li>git remote add origin url：关联远程仓库</li>
+<li>git pull</li>
+<li>git fetch：获取远程仓库中所有的分支到本地</li>
+</ol>
+<h2 id="忽略已加入到版本库中的文件"><a href="#忽略已加入到版本库中的文件" class="headerlink" title="忽略已加入到版本库中的文件"></a>忽略已加入到版本库中的文件</h2><ul>
+<li>git update-index –assume-unchanged file：忽略单个文件</li>
+</ul>
+<h2 id="取消忽略文件"><a href="#取消忽略文件" class="headerlink" title="取消忽略文件"></a>取消忽略文件</h2><ul>
+<li>git update-index –no-assume-unchanged file</li>
+</ul>
+<h2 id="拉取-上传免密码"><a href="#拉取-上传免密码" class="headerlink" title="拉取. 上传免密码"></a>拉取. 上传免密码</h2><ul>
+<li>git config –global credential.helper store</li>
+</ul>
 
             <span style="float:right;" id="/2019/04/01/20190401-gitCommand/" class="leancloud_visitors" data-flag-title="工作中 99% 能用到的 git 命令">
                 <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
@@ -285,8 +340,16 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         "dateCreated": "2019-04-01",
         "dateModified": "2019-04-01",
         "url": "http://shenxf.top/2019/04/01/20190401-gitCommand/",
-        "description": "分支操作1、git branch：创建分支2、git branch -b：创建并切换到新建的分支上3、git checkout：切换分支4、git branch：查看分支列表5、git branch -v：查看所有分支的最后一次操作6、git branch -vv：查看当前分支7、git brabch -b 分支名 origin/分支名：创建远程分支到本地8、git branch –merged："
-        "wordCount": 153
+        "description": "分支操作
+git branch：创建分支
+git branch -b：创建并切换到新建的分支上
+git checkout：切换分支
+git branch：查看分支列表
+git branch -v：查看所有分支的最后一次操作
+git branch -vv：查看当前分支
+git brabch -b 分支名 origin/分支名：创建远程分支到本地
+git branch –merged：查看别的分支和当"
+        "wordCount": 155
     }
 </script>
 
