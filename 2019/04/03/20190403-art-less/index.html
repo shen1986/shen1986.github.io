@@ -1,0 +1,614 @@
+<!--
+ * @Description: 头部
+ * @Author: shenxf
+ * @Date: 2019-03-04 13:52:10
+ -->
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>less介绍 | 小沈的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="less,less环境安装,less语法,Mixin">
+    
+    <meta name="description" content="Less环境安装 安装nodejs 在部分win8系统当中无法安装 （解决办法的是  已管理员权限运行cmd然后再按写命令切换到安装包目录，直接命令执行）  安装完成nodejs之后  检测是否安装完成   node  –v  查看版本 然后检测 npm是否自带  npm  –v 查看版本 在线安装 然后  运行  npm install –g less  (部分电脑要 sudo 管理权限) Le">
+<meta name="keywords" content="less,less环境安装,less语法,Mixin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="less介绍">
+<meta property="og:url" content="http://shenxf.top/2019/04/03/20190403-art-less/index.html">
+<meta property="og:site_name" content="小沈的个人博客">
+<meta property="og:description" content="Less环境安装 安装nodejs 在部分win8系统当中无法安装 （解决办法的是  已管理员权限运行cmd然后再按写命令切换到安装包目录，直接命令执行）  安装完成nodejs之后  检测是否安装完成   node  –v  查看版本 然后检测 npm是否自带  npm  –v 查看版本 在线安装 然后  运行  npm install –g less  (部分电脑要 sudo 管理权限) Le">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://shenxf.top/2019/04/03/20190403-art-less/1.png">
+<meta property="og:updated_time" content="2019-04-03T01:46:19.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="less介绍">
+<meta name="twitter:description" content="Less环境安装 安装nodejs 在部分win8系统当中无法安装 （解决办法的是  已管理员权限运行cmd然后再按写命令切换到安装包目录，直接命令执行）  安装完成nodejs之后  检测是否安装完成   node  –v  查看版本 然后检测 npm是否自带  npm  –v 查看版本 在线安装 然后  运行  npm install –g less  (部分电脑要 sudo 管理权限) Le">
+<meta name="twitter:image" content="http://shenxf.top/2019/04/03/20190403-art-less/1.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/live2d/css/live2d.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?84db2c117432e9204ade2d7370b591ab";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8316273523263794",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <!-- 百度自动推送 -->
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">发表文章，自己的想法，学习分享</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/博客/">博客</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/网站开发/">网站开发</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/网站开发/项目计划/">项目计划</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20190403-art-less" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        less介绍
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/04/03/20190403-art-less/" class="article-date">
+            <time datetime="2019-04-03T01:24:11.000Z" itemprop="datePublished">2019-04-03</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Mixin/">Mixin</a>, <a class="tag-link" href="/tags/less/">less</a>, <a class="tag-link" href="/tags/less环境安装/">less环境安装</a>, <a class="tag-link" href="/tags/less语法/">less语法</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Less环境安装"><a href="#Less环境安装" class="headerlink" title="Less环境安装"></a>Less环境安装</h2><ul>
+<li>安装nodejs</li>
+<li>在部分win8系统当中无法安装</li>
+<li><p>（解决办法的是  已管理员权限运行cmd然后再按写命令切换到安装包目录，直接命令执行）</p>
+</li>
+<li><p>安装完成nodejs之后</p>
+</li>
+<li>检测是否安装完成   <code>node  –v</code>  查看版本</li>
+<li>然后检测 npm是否自带  <code>npm  –v</code> 查看版本</li>
+<li>在线安装</li>
+<li>然后  运行  <code>npm install –g less</code>  (部分电脑要 sudo 管理权限)<br><img src="/2019/04/03/20190403-art-less/1.png" alt="lessc版本"></li>
+<li><code>Lessc –v</code>  查看版本    是否安装成功</li>
+<li>也可以离线安装，一般没人这么做就不说了</li>
+</ul>
+<h2 id="学习less"><a href="#学习less" class="headerlink" title="学习less"></a>学习less</h2><p><a href="http://lesscss.org/" target="_blank" rel="noopener">官网</a><br><a href="http://lesscss.cn/" target="_blank" rel="noopener">官网中文网</a><br><a href="http://www.1024i.com/demo/less/" target="_blank" rel="noopener">中文非官网</a></p>
+<ul>
+<li><code>Lessc less.less less.css</code>  编译less文件成css</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>CSS（层叠样式表）是一门历史悠久的标记性语言，同 HTML 一道，被广泛应用于万维网（World Wide Web）中。HTML 主要负责文档结构的定义，CSS 负责文档表现形式或样式的定义。</li>
+<li>作为一门标记性语言，CSS 的语法相对简单，对使用者的要求较低，但同时也带来一些问题：CSS 需要书写大量看似没有逻辑的代码，不方便维护及扩展，不利于复用，尤其对于非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码，造成这些困难的很大原因源于 CSS 是一门非程序式语言，没有变量、函数、SCOPE（作用域）等概念。LESS 为 Web 开发者带来了福音，它在 CSS 的语法基础之上，引入了变量，Mixin（混入），运算以及函数等功能，大大简化了 CSS 的编写，并且降低了 CSS 的维护成本，就像它的名称所说的那样，LESS 可以让我们用更少的代码做更多的事情。</li>
+</ul>
+<h2 id="LESS-原理及使用方式"><a href="#LESS-原理及使用方式" class="headerlink" title="LESS 原理及使用方式"></a>LESS 原理及使用方式</h2><ul>
+<li>本质上，LESS 包含一套自定义的语法及一个解析器，用户根据这些语法定义自己的样式规则，这些规则最终会通过解析器，编译生成对应的 CSS 文件。LESS 并没有裁剪 CSS 原有的特性，更不是用来取代 CSS 的，而是在现有 CSS 语法的基础上，为 CSS 加入程序式语言的特性。</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<li>变量  </li>
+<li>Mixin混入</li>
+<li>嵌套</li>
+<li>Import</li>
+<li>函数（内置函数 运算）</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>LESS 允许开发者自定义变量，变量可以在全局样式中使用，变量使得样式修改起来更加简单。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-----------------变量-----------------*/</span></span><br><span class="line">@mainColor:#E93223;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: @mainColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Mixin混入"><a href="#Mixin混入" class="headerlink" title="Mixin混入"></a>Mixin混入</h2><ul>
+<li>Mixin（混入）功能对用开发者来说并不陌生，很多动态语言都支持 Mixin（混入）特性，它是多重继承的一种实现，在 LESS 中，混入是指在一个 CLASS 中引入另外一个已经定义的 CLASS，就像在当前 CLASS 中增加一个属性一样。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-----------------mixin 混入----------------*/</span></span><br><span class="line"><span class="comment">/*颜色*/</span></span><br><span class="line"><span class="selector-class">.red</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: @mainColor;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.border</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.redBorder</span>()&#123;</span><br><span class="line">  <span class="attribute">color</span>: @mainColor;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.mixin-class</span>&#123;</span><br><span class="line">  .red();</span><br><span class="line">  <span class="selector-class">.border</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.mixin-fuc</span>&#123;</span><br><span class="line">  .redBorder();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><ul>
+<li>在我们书写标准 CSS 的时候，遇到多层的元素嵌套这种情况时，我们要么采用从外到内的选择器嵌套定义，要么采用给特定元素加 CLASS 或 ID 的方式<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*------------------嵌套------------------*/</span></span><br><span class="line"><span class="comment">/*轮播图*/</span></span><br><span class="line"><span class="selector-id">#wjs_banner</span>&#123;</span><br><span class="line">  .carousel-inner&#123;</span><br><span class="line">    &gt; <span class="selector-tag">div</span><span class="selector-class">.item</span>&#123;</span><br><span class="line">      a.img_box&#123;</span><br><span class="line">        background: url("../images/slide_01_2000x410.jpg") no-repeat center center;</span><br><span class="line">        <span class="selector-tag">height</span>: 410<span class="selector-tag">px</span>;</span><br><span class="line">        <span class="comment">/*调用redBorder mixin*/</span></span><br><span class="line">        <span class="selector-tag">display</span>: <span class="selector-tag">block</span>;</span><br><span class="line">        <span class="selector-class">.redBorder</span>();</span><br><span class="line">        <span class="comment">/*调用@mainColor 变量*/</span></span><br><span class="line">        &amp;<span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">          <span class="attribute">color</span>: @mainColor;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="selector-tag">a</span><span class="selector-class">.img_mobile</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">display</span>: block;</span><br><span class="line">        img&#123;</span><br><span class="line">          <span class="selector-tag">width</span>: 100%;</span><br><span class="line">          <span class="selector-tag">display</span>: <span class="selector-tag">block</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Import-导入"><a href="#Import-导入" class="headerlink" title="Import 导入"></a>Import 导入</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*---------------------Import 引入------------------------*/</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"base"</span>;</span><br><span class="line"><span class="selector-class">.f_left</span>&#123;</span><br><span class="line">  <span class="attribute">float</span>: @right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运算及函数"><a href="#运算及函数" class="headerlink" title="运算及函数"></a>运算及函数</h2><ul>
+<li>在我们的 CSS 中充斥着大量的数值型的 value，比如 color、padding、margin 等，这些数值之间在某些情况下是有着一定关系的，那么我们怎样利用 LESS 来组织我们这些数值之间的关系呢？</li>
+<li><p><a href="http://www.1024i.com/demo/less/reference.html" target="_blank" rel="noopener">http://www.1024i.com/demo/less/reference.html</a></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">escape(@<span class="keyword">string</span>); <span class="comment">// 通过 URL-encoding 编码字符串</span></span><br><span class="line">e(@<span class="keyword">string</span>); <span class="comment">// 对字符串转义</span></span><br><span class="line">%(@<span class="keyword">string</span>, values...); <span class="comment">// 格式化字符串</span></span><br><span class="line">unit(@dimension, [@unit: <span class="string">""</span>]); <span class="comment">// 移除或替换属性值的单位</span></span><br><span class="line">color(@<span class="keyword">string</span>); <span class="comment">// 将字符串解析为颜色值</span></span><br><span class="line">data-uri([mimetype,] url); <span class="comment">// * 将资源内嵌到css中，可能回退到url()</span></span><br><span class="line">ceil(@number); <span class="comment">// 向上取整</span></span><br><span class="line">floor(@number); <span class="comment">// 向下取整</span></span><br><span class="line">percentage(@number); <span class="comment">// 将数字转换为百分比，例如 0.5 -&gt; 50%</span></span><br><span class="line">round(number, [places: <span class="number">0</span>]); <span class="comment">// 四舍五入取整</span></span><br><span class="line">sqrt(number); <span class="comment">// * 计算数字的平方根</span></span><br><span class="line">abs(number); <span class="comment">// * 数字的绝对值</span></span><br><span class="line">sin(number); <span class="comment">// * sin函数</span></span><br><span class="line">asin(number); <span class="comment">// * arcsin函数</span></span><br><span class="line">cos(number); <span class="comment">// * cos函数</span></span><br><span class="line">acos(number); <span class="comment">// * arccos函数</span></span><br><span class="line">tan(number); <span class="comment">// * tan函数</span></span><br><span class="line">atan(number); <span class="comment">// * arctan函数</span></span><br><span class="line">pi(); <span class="comment">// * 返回PI</span></span><br><span class="line">pow(@<span class="keyword">base</span>, @exponent); <span class="comment">// * 返回@base的@exponent次方</span></span><br><span class="line">mod(number, number); <span class="comment">// * 第一个参数对第二个参数取余</span></span><br><span class="line">convert(number, units); <span class="comment">// * 在数字之间转换</span></span><br><span class="line">unit(number, units); <span class="comment">// * 不转换的情况下替换数字的单位</span></span><br><span class="line">color(<span class="keyword">string</span>); <span class="comment">// 将字符串或者转义后的值转换成颜色</span></span><br><span class="line">rgb(@r, @g, @b); <span class="comment">// 转换为颜色值</span></span><br><span class="line">rgba(@r, @g, @b, @a); <span class="comment">// 转换为颜色值</span></span><br><span class="line">argb(@color); <span class="comment">// 创建 #AARRGGBB 格式的颜色值</span></span><br><span class="line">hsl(@hue, @saturation, @lightness); <span class="comment">// 创建颜色值</span></span><br><span class="line">hsla(@hue, @saturation, @lightness, @alpha); <span class="comment">// 创建颜色值</span></span><br><span class="line">hsv(@hue, @saturation, @<span class="keyword">value</span>); <span class="comment">// 创建颜色值</span></span><br><span class="line">hsva(@hue, @saturation, @<span class="keyword">value</span>, @alpha); <span class="comment">// 创建颜色值</span></span><br><span class="line">hue(@color); <span class="comment">// 从颜色值中提取 hue 值（色相）</span></span><br><span class="line">saturation(@color); <span class="comment">// 从颜色值中提取 saturation 值（饱和度）</span></span><br><span class="line">lightness(@color); <span class="comment">// 从颜色值中提取 'lightness' 值（亮度）</span></span><br><span class="line">hsvhue(@color); <span class="comment">// * 从颜色中提取 hue 值，以HSV色彩空间表示（色相）</span></span><br><span class="line">hsvsaturation(@color); <span class="comment">// * 从颜色中提取 saturation 值，以HSV色彩空间表示（饱和度）</span></span><br><span class="line">hsvvalue(@color); <span class="comment">// * 从颜色中提取 value 值，以HSV色彩空间表示（色调）</span></span><br><span class="line">red(@color); <span class="comment">// 从颜色值中提取 'red' 值（红色）</span></span><br><span class="line">green(@color); <span class="comment">// 从颜色值中提取 'green' 值（绿色）</span></span><br><span class="line">blue(@color); <span class="comment">// 从颜色值中提取 'blue' 值（蓝色）</span></span><br><span class="line">alpha(@color); <span class="comment">// 从颜色值中提取 'alpha' 值（透明度）</span></span><br><span class="line">luma(@color); <span class="comment">// 从颜色值中提取 'luma' 值（亮度的百分比表示法）</span></span><br><span class="line">saturate(@color, <span class="number">10</span>%); <span class="comment">// 饱和度增加 10%</span></span><br><span class="line">desaturate(@color, <span class="number">10</span>%); <span class="comment">// 饱和度降低 10%</span></span><br><span class="line">lighten(@color, <span class="number">10</span>%); <span class="comment">// 亮度增加 10%</span></span><br><span class="line">darken(@color, <span class="number">10</span>%); <span class="comment">// 亮度降低 10%</span></span><br><span class="line">fadein(@color, <span class="number">10</span>%); <span class="comment">// 透明度增加 10%</span></span><br><span class="line">fadeout(@color, <span class="number">10</span>%); <span class="comment">// 透明度降低 10%</span></span><br><span class="line">fade(@color, <span class="number">50</span>%); <span class="comment">// 设定透明度为 50%</span></span><br><span class="line">spin(@color, <span class="number">10</span>); <span class="comment">// 色相值增加 10</span></span><br><span class="line">mix(@color1, @color2, [@weight: <span class="number">50</span>%]); <span class="comment">// 混合两种颜色</span></span><br><span class="line">greyscale(@color); <span class="comment">// 完全移除饱和度，输出灰色</span></span><br><span class="line">contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: <span class="number">43</span>%]); <span class="comment">// 如果 @color1 的 luma 值 &gt; 43% 输出 @darkcolor，否则输出 @lightcolor</span></span><br><span class="line">multiply(@color1, @color2);</span><br><span class="line">screen(@color1, @color2);</span><br><span class="line">overlay(@color1, @color2);</span><br><span class="line">softlight(@color1, @color2);</span><br><span class="line">hardlight(@color1, @color2);</span><br><span class="line">difference(@color1, @color2);</span><br><span class="line">exclusion(@color1, @color2);</span><br><span class="line">average(@color1, @color2);</span><br><span class="line">negation(@color1, @color2);</span><br><span class="line">iscolor(@colorOrAnything); <span class="comment">// 判断一个值是否是颜色</span></span><br><span class="line">isnumber(@numberOrAnything); <span class="comment">// 判断一个值是否是数字（可含单位）</span></span><br><span class="line">isstring(@stringOrAnything); <span class="comment">// 判断一个值是否是字符串</span></span><br><span class="line">iskeyword(@keywordOrAnything); <span class="comment">// 判断一个值是否是关键字</span></span><br><span class="line">isurl(@urlOrAnything); <span class="comment">// 判断一个值是否是url</span></span><br><span class="line">ispixel(@pixelOrAnything); <span class="comment">// 判断一个值是否是以px为单位的数值</span></span><br><span class="line">ispercentage(@percentageOrAnything); <span class="comment">// 判断一个值是否是百分数</span></span><br><span class="line">isem(@emOrAnything); <span class="comment">// 判断一个值是否是以em为单位的数值</span></span><br><span class="line">isunit(@numberOrAnything, <span class="string">"rem"</span>); <span class="comment">// * 判断一个值是否是指定单位的数值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-------------------运算和函数--------------------------*/</span></span><br><span class="line">@back:#333;</span><br><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid @back*<span class="number">2</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">lighten</span>(#000, 10%);</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">darken</span>(#000, 10%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Less在浏览器上使用的方法"><a href="#Less在浏览器上使用的方法" class="headerlink" title="Less在浏览器上使用的方法"></a>Less在浏览器上使用的方法</h2><ul>
+<li>请参照官网，less提供了js文件，能够在html里面直接运行less，但是这是有代价的，会有一定的编译开销，一般用在开发或则学习的时候，作为产品最好不要这么用。</li>
+<li><p>样式部分</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet/less"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.less"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>script部分</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"less.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+            <span style="float:right;" id="/2019/04/03/20190403-art-less/" class="leancloud_visitors" data-flag-title="less介绍">
+                <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
+                <i style="font-style:normal;" class="leancloud-visitors-count">1</i>:次
+            </span>
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "小沈"
+        },
+        "headline": "less介绍",
+        "image": "http://shenxf.top/2019/04/03/20190403-art-less/1.png",
+        "keywords": "less less环境安装 less语法 Mixin",
+        "genre": "文章",
+        "datePublished": "2019-04-03",
+        "dateCreated": "2019-04-03",
+        "dateModified": "2019-04-03",
+        "url": "http://shenxf.top/2019/04/03/20190403-art-less/",
+        "description": "Less环境安装
+安装nodejs
+在部分win8系统当中无法安装
+（解决办法的是  已管理员权限运行cmd然后再按写命令切换到安装包目录，直接命令执行）
+
+安装完成nodejs之后
+
+检测是否安装完成   node  –v  查看版本
+然后检测 npm是否自带  npm  –v 查看版本
+在线安装
+然后  运行  npm install –g less  (部分电脑要 sudo 管理权限)
+Le"
+        "wordCount": 1085
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/shen1986" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/04/02/20190402-hexo-blog1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">hexo教程：github page+独立域名搭建(1)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            shenxf1986@qq.com
+        </div>
+        <a href="javascript:;" id="showLive2d" style="color: #006bde;text-decoration: none;">显示博客MM</a>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/03/20190403-art-less/" class="title">less介绍</a></p>
+                            <p class="item-date"><time datetime="2019-04-03T01:24:11.000Z" itemprop="datePublished">2019-04-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/博客/">博客</a></p>
+                            <p class="item-title"><a href="/2019/04/02/20190402-hexo-blog1/" class="title">hexo教程：github page+独立域名搭建(1)</a></p>
+                            <p class="item-date"><time datetime="2019-04-02T02:07:57.000Z" itemprop="datePublished">2019-04-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nodejs/">nodejs</a></p>
+                            <p class="item-title"><a href="/2019/04/01/20190401-nodejs-typeScript/" class="title">使用 typeScript 开发的搭配</a></p>
+                            <p class="item-date"><time datetime="2019-04-01T09:31:35.000Z" itemprop="datePublished">2019-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/01/20190401-gitCommand/" class="title">工作中 99% 能用到的 git 命令</a></p>
+                            <p class="item-date"><time datetime="2019-04-01T04:42:37.000Z" itemprop="datePublished">2019-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nodejs/">nodejs</a></p>
+                            <p class="item-title"><a href="/2019/04/01/20190401-nodejs-Introduction1/" class="title">Node.js 入门系列1</a></p>
+                            <p class="item-date"><time datetime="2019-04-01T03:10:21.000Z" itemprop="datePublished">2019-04-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/项目计划/">项目计划</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全功能/" style="font-size: 10px;">html代码补全功能</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 10px;">seo</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://ohs-sys.com">上海冈三华大计算机技术有限公司</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity: 0.8"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 小沈</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计代码-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http:/shenxf.top/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
+</script>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: '',
+            avatar_cdn:  '',
+            visitor: true
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
