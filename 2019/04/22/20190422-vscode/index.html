@@ -11,24 +11,26 @@
     
 
     
-    <title>20190422-vscode | 小沈的个人博客</title>
+    <title>使用vscode时，如何在.vue文件中使用html代码补全功能 | 小沈的个人博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content>
+        <meta name="keywords" content="vscode,vue,html代码补全">
     
-    <meta name="description" content="用来总结自己学过的东西">
-<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,NodeJs,vue">
+    <meta name="description" content="使用vscode编写vue代码，刚开始点击tab是不会自动补全代码的，这个就很郁闷了。百度了半天：https://segmentfault.com/a/1190000010339485 参考这个最后解决了问题 一、HTML Snippets 在vscode中把这个插件下载了并且启用，然后翻阅插件的ReadMe，我们可以看到如下图得FAQ:    这段代码是提示我们需要在settings.json中">
+<meta name="keywords" content="vscode,vue,html代码补全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20190422-vscode">
+<meta property="og:title" content="使用vscode时，如何在.vue文件中使用html代码补全功能">
 <meta property="og:url" content="http://shenxf.top/2019/04/22/20190422-vscode/index.html">
 <meta property="og:site_name" content="小沈的个人博客">
-<meta property="og:description" content="用来总结自己学过的东西">
+<meta property="og:description" content="使用vscode编写vue代码，刚开始点击tab是不会自动补全代码的，这个就很郁闷了。百度了半天：https://segmentfault.com/a/1190000010339485 参考这个最后解决了问题 一、HTML Snippets 在vscode中把这个插件下载了并且启用，然后翻阅插件的ReadMe，我们可以看到如下图得FAQ:    这段代码是提示我们需要在settings.json中">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T02:47:43.023Z">
+<meta property="og:image" content="http://shenxf.top/2019/04/22/20190422-vscode/20180319180501532.png">
+<meta property="og:updated_time" content="2019-04-22T02:51:26.434Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20190422-vscode">
-<meta name="twitter:description" content="用来总结自己学过的东西">
+<meta name="twitter:title" content="使用vscode时，如何在.vue文件中使用html代码补全功能">
+<meta name="twitter:description" content="使用vscode编写vue代码，刚开始点击tab是不会自动补全代码的，这个就很郁闷了。百度了半天：https://segmentfault.com/a/1190000010339485 参考这个最后解决了问题 一、HTML Snippets 在vscode中把这个插件下载了并且启用，然后翻阅插件的ReadMe，我们可以看到如下图得FAQ:    这段代码是提示我们需要在settings.json中">
+<meta name="twitter:image" content="http://shenxf.top/2019/04/22/20190422-vscode/20180319180501532.png">
     
 
     
@@ -173,7 +175,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    未分类
+    <a class="page-title-link" href="/categories/文章/">文章</a>
     </h1>
 </div>
 
@@ -185,7 +187,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        20190422-vscode
+        使用vscode时，如何在.vue文件中使用html代码补全功能
         </h1>
     
 
@@ -203,12 +205,46 @@
 		
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html代码补全/">html代码补全</a>, <a class="tag-link" href="/tags/vscode/">vscode</a>, <a class="tag-link" href="/tags/vue/">vue</a>
+    </div>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            
-            <span style="float:right;" id="/2019/04/22/20190422-vscode/" class="leancloud_visitors" data-flag-title="20190422-vscode">
+            <p>使用vscode编写vue代码，刚开始点击tab是不会自动补全代码的，这个就很郁闷了。<br>百度了半天：<a href="https://segmentfault.com/a/1190000010339485" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010339485</a> 参考这个最后解决了问题</p>
+<h2 id="一、HTML-Snippets"><a href="#一、HTML-Snippets" class="headerlink" title="一、HTML Snippets"></a>一、HTML Snippets</h2><ul>
+<li>在vscode中把这个插件下载了并且启用，然后翻阅插件的ReadMe，我们可以看到如下图得FAQ:</li>
+</ul>
+<p><img src="/2019/04/22/20190422-vscode/20180319180501532.png" alt="FAQ"></p>
+<ul>
+<li>这段代码是提示我们需要在settings.json中配置files.associations的属性。</li>
+</ul>
+<h2 id="二、settings-json中配置files-associations对象"><a href="#二、settings-json中配置files-associations对象" class="headerlink" title="二、settings.json中配置files.associations对象"></a>二、settings.json中配置files.associations对象</h2><ul>
+<li><p>首先，依次打开“文件 –&gt; 首选项 –&gt; 设置”，就会看到settings.json文件了</p>
+</li>
+<li><p>然后在settings.json中找到“常用设置”里的files.associations对象</p>
+</li>
+<li><p>然后把鼠标滑到对象的左边，会出现如图所示的一个“编辑”的标志，点击它，就会打开右边编辑页，如图：</p>
+</li>
+</ul>
+<p><img src="/2019/04/22/20190422-vscode/2018031918013166.png" alt="编辑"></p>
+<ul>
+<li>按照上图的步骤去配置就可以了，然后再回到.vue的页面，打出div，再按住tab键，就可以自动补全代码了，这里只用写最后一句话就可以了</li>
+</ul>
+<p><img src="/2019/04/22/20190422-vscode/20180319180113710.png" alt="最后一句话"></p>
+<ul>
+<li>可以看到也出现了代码提示功能，你可以选择一个自己想要的，也可以不选，直接按住tab键，就可以生成<code>&lt;p&gt;&lt;/p&gt;</code>了，如下图：</li>
+</ul>
+<p><img src="/2019/04/22/20190422-vscode/20180319180219489.png" alt="p标签提示"></p>
+<ul>
+<li>之后的设置</li>
+</ul>
+<p><img src="/2019/04/22/20190422-vscode/20180319180323841.png" alt="之后的设置"></p>
+
+            <span style="float:right;" id="/2019/04/22/20190422-vscode/" class="leancloud_visitors" data-flag-title="使用vscode时，如何在.vue文件中使用html代码补全功能">
                 <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
                 <i style="font-style:normal;" class="leancloud-visitors-count">1</i>:次
             </span>
@@ -263,16 +299,22 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "小沈"
         },
-        "headline": "20190422-vscode",
-        "image": "http://shenxf.top",
-        "keywords": "",
-        "genre": "",
+        "headline": "使用vscode时，如何在.vue文件中使用html代码补全功能",
+        "image": "http://shenxf.top/2019/04/22/20190422-vscode/20180319180501532.png",
+        "keywords": "vscode vue html代码补全",
+        "genre": "文章",
         "datePublished": "2019-04-22",
         "dateCreated": "2019-04-22",
         "dateModified": "2019-04-22",
         "url": "http://shenxf.top/2019/04/22/20190422-vscode/",
-        "description": ""
-        "wordCount": 1
+        "description": "使用vscode编写vue代码，刚开始点击tab是不会自动补全代码的，这个就很郁闷了。百度了半天：https://segmentfault.com/a/1190000010339485 参考这个最后解决了问题
+一、HTML Snippets
+在vscode中把这个插件下载了并且启用，然后翻阅插件的ReadMe，我们可以看到如下图得FAQ:
+
+
+
+这段代码是提示我们需要在settings.json中"
+        "wordCount": 29
     }
 </script>
 
@@ -346,8 +388,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/04/22/20190422-vscode/" class="title">20190422-vscode</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/22/20190422-vscode/" class="title">使用vscode时，如何在.vue文件中使用html代码补全功能</a></p>
                             <p class="item-date"><time datetime="2019-04-22T02:47:43.000Z" itemprop="datePublished">2019-04-22</time></p>
                         </div>
                     </li>
@@ -397,7 +439,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/项目计划/">项目计划</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/项目计划/">项目计划</a><span class="category-list-count">1</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -417,7 +459,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全功能/" style="font-size: 10px;">html代码补全功能</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 10px;">seo</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a>
+            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全/" style="font-size: 10px;">html代码补全</a> <a href="/tags/html代码补全功能/" style="font-size: 10px;">html代码补全功能</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 10px;">seo</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a>
         </div>
     </div>
 
