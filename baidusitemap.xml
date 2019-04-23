@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://shenxf.top/2019/04/23/20190423-siteMemo/</loc>
+    <lastmod>2019-04-23</lastmod>
+  </url>  <url>
+    <loc>http://shenxf.top/2019/03/04/hexo/</loc>
+    <lastmod>2019-04-23</lastmod>
+  </url>  <url>
     <loc>http://shenxf.top/2019/04/22/20190422-vscode/</loc>
     <lastmod>2019-04-22</lastmod>
   </url>  <url>
@@ -36,8 +42,5 @@
   </url>  <url>
     <loc>http://shenxf.top/2019/03/26/article/</loc>
     <lastmod>2019-03-26</lastmod>
-  </url>  <url>
-    <loc>http://shenxf.top/2019/03/04/hexo/</loc>
-    <lastmod>2019-03-22</lastmod>
   </url>
 </urlset>
