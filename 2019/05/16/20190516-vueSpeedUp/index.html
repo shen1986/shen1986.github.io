@@ -1,0 +1,704 @@
+<!--
+ * @Description: 头部
+ * @Author: shenxf
+ * @Date: 2019-03-04 13:52:10
+ -->
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Vue发布过程中遇到坑，以及webpack打包优化 | 小沈的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="vue,webpack,性能调优">
+    
+    <meta name="description" content="前言 这段时间，本人自己做了一个vue画面部署到自己的服务器上，发现运行速度慢的的惊人，虽然服务器很渣（本人没什么钱，只能租最差的服务器，主要是给自己学习用的），但是这样开发出来的网站简直不能用，所以就查阅各种资料和网站，一步一步把代码包优化。这篇文章主要是把我调优的过程记录下来。 项目的基础框架是通过TypeScript官网取得的。各种基础框架模版 项目的构成 vue + ant-design">
+<meta name="keywords" content="vue,webpack,性能调优">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue发布过程中遇到坑，以及webpack打包优化">
+<meta property="og:url" content="http://shenxf.top/2019/05/16/20190516-vueSpeedUp/index.html">
+<meta property="og:site_name" content="小沈的个人博客">
+<meta property="og:description" content="前言 这段时间，本人自己做了一个vue画面部署到自己的服务器上，发现运行速度慢的的惊人，虽然服务器很渣（本人没什么钱，只能租最差的服务器，主要是给自己学习用的），但是这样开发出来的网站简直不能用，所以就查阅各种资料和网站，一步一步把代码包优化。这篇文章主要是把我调优的过程记录下来。 项目的基础框架是通过TypeScript官网取得的。各种基础框架模版 项目的构成 vue + ant-design">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://shenxf.top/2019/05/16/20190516-vueSpeedUp/G1.jpg">
+<meta property="og:updated_time" content="2019-05-28T04:31:10.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue发布过程中遇到坑，以及webpack打包优化">
+<meta name="twitter:description" content="前言 这段时间，本人自己做了一个vue画面部署到自己的服务器上，发现运行速度慢的的惊人，虽然服务器很渣（本人没什么钱，只能租最差的服务器，主要是给自己学习用的），但是这样开发出来的网站简直不能用，所以就查阅各种资料和网站，一步一步把代码包优化。这篇文章主要是把我调优的过程记录下来。 项目的基础框架是通过TypeScript官网取得的。各种基础框架模版 项目的构成 vue + ant-design">
+<meta name="twitter:image" content="http://shenxf.top/2019/05/16/20190516-vueSpeedUp/G1.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="小沈的个人博客" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/live2d/css/live2d.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?84db2c117432e9204ade2d7370b591ab";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8316273523263794",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <!-- 百度自动推送 -->
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">发表文章，自己的想法，学习分享</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/博客/">博客</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/网站开发/">网站开发</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20190516-vueSpeedUp" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Vue发布过程中遇到坑，以及webpack打包优化
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/05/16/20190516-vueSpeedUp/" class="article-date">
+            <time datetime="2019-05-16T12:06:24.000Z" itemprop="datePublished">2019-05-16</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue/">vue</a>, <a class="tag-link" href="/tags/webpack/">webpack</a>, <a class="tag-link" href="/tags/性能调优/">性能调优</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>这段时间，本人自己做了一个vue画面部署到自己的服务器上，发现运行速度慢的的惊人，虽然服务器很渣（本人没什么钱，只能租最差的服务器，主要是给自己学习用的），但是这样开发出来的网站简直不能用，所以就查阅各种资料和网站，一步一步把代码包优化。这篇文章主要是把我调优的过程记录下来。</li>
+<li>项目的基础框架是通过TypeScript官网取得的。<a href="https://www.tslang.cn/samples/index.html" target="_blank" rel="noopener">各种基础框架模版</a></li>
+<li>项目的构成 vue + ant-design + mysql + TypeScript</li>
+<li><a href="https://github.com/shen1986/shenBlog/tree/master/front-vueProject/admin" target="_blank" rel="noopener">vue项目地址</a></li>
+<li>最后，关于如何在vue里面实现按需加载，请自行查阅相关资料。以及，webpack的基础知识本文也不做介绍，可以参照我github的 <a href="https://github.com/shen1986/webpackStudy" target="_blank" rel="noopener">学习笔记</a></li>
+</ul>
+<h2 id="调优过程"><a href="#调优过程" class="headerlink" title="调优过程"></a>调优过程</h2><ol>
+<li>禁用webpack的devtools</li>
+</ol>
+<ul>
+<li>打包出来的js文件非常大，每个js文件竟然达到了3～4Mbs，这样的体积对于我的服务带宽来说根本负担不起。打开画面必卡。</li>
+<li>究其原因，是因为webpack里面启用了sourceMap，以便于调试。但是这在发布以后就完全没有用了。</li>
+<li>webpack配置，里面有这句话，把这句话注释掉。原本3～4Mbs的文件，变成了1Mbs文件。压缩了3倍以上。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启用sourceMap</span></span><br><span class="line">devtool: <span class="string">'#source-map'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>抽离css样式等</li>
+</ol>
+<ul>
+<li><p>这个虽然对于改善效果不明显，但是好的分类对于发现问题的本质有很大的帮助。另外，css样式分离后要自己进行压缩。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// *************webpack需要引入的包*************************</span></span><br><span class="line"><span class="comment">// 抽离css样式</span></span><br><span class="line"><span class="keyword">let</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>);</span><br><span class="line"><span class="comment">// 用来压缩分离出来的css样式</span></span><br><span class="line"><span class="keyword">let</span> OptimizeCss =  <span class="built_in">require</span>(<span class="string">'optimize-css-assets-webpack-plugin'</span>);</span><br><span class="line"><span class="comment">// 用来压缩js</span></span><br><span class="line"><span class="keyword">let</span> UglifyJsPlugin = <span class="built_in">require</span>(<span class="string">'uglifyjs-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// *************webpack相关配置部分*************************</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    optimization: &#123;</span><br><span class="line">        <span class="comment">// 优化项</span></span><br><span class="line">        minimizer: [</span><br><span class="line">            <span class="keyword">new</span> OptimizeCss(), <span class="comment">// 压缩css</span></span><br><span class="line">            <span class="keyword">new</span> UglifyJsPlugin(&#123; <span class="comment">// 压缩js</span></span><br><span class="line">                cache: <span class="literal">true</span>, <span class="comment">// 是否用缓存</span></span><br><span class="line">                parallel: <span class="literal">true</span>, <span class="comment">// 并发打包</span></span><br><span class="line">                sourceMap: <span class="literal">false</span>, <span class="comment">// es6 -&gt; es5 转换时会用到</span></span><br><span class="line">            &#125;),</span><br><span class="line">        ],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 中间部分省略</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽离css样式</span></span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">            filename: <span class="string">'css/[name].css'</span>, <span class="comment">// 抽离出来样式的名字</span></span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抽离之后，现在项目生成文件的大小是这样。<br><img src="/2019/05/16/20190516-vueSpeedUp/G1.jpg" alt="JS文件的大小"></p>
+</li>
+</ul>
+<ol start="3">
+<li>启用依赖关系可视化工具</li>
+</ol>
+<ul>
+<li><p>完成上面工作之后，陷入了茫然，网站还是很卡，不知道还能怎么调优，在翻阅了很多网站资料以后，发现了一个依赖关系可视化工具，这对于我来说是一个重大的突破口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 依赖关系可视化</span></span><br><span class="line"><span class="comment">// *************webpack需要引入的包*************************</span></span><br><span class="line"><span class="keyword">const</span> &#123; BundleAnalyzerPlugin &#125; = <span class="built_in">require</span>(<span class="string">'webpack-bundle-analyzer'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// *************webpack相关配置部分*************************</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动依赖关系可视化窗口，绑定端口8919</span></span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> BundleAnalyzerPlugin(&#123; <span class="attr">analyzerPort</span>: <span class="number">8919</span> &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新进行编译以后的效果图<br><img src="/2019/05/16/20190516-vueSpeedUp/G2.jpg" alt="JS文件的依赖关系图"></p>
+</li>
+<li><p>通过这个效果图可以很明显的看出js文件里面包含什么依赖，我就是通过这个线索来进行优化的。</p>
+</li>
+</ul>
+<ol start="4">
+<li>抽离共通部分</li>
+</ol>
+<ul>
+<li><p>为了方便我调查，我把共通的依赖部分都抽离出来了。而这个功能是webpack4自带的，如果是之前或者更早版本的webpack，需要引入第三方组件<code>CommonsChunkPlugin</code>这里不做介绍。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    optimization: &#123;</span><br><span class="line">        <span class="comment">//打包 公共文件</span></span><br><span class="line">        splitChunks: &#123;</span><br><span class="line">            cacheGroups: &#123;</span><br><span class="line">                vendor: &#123;</span><br><span class="line">                    <span class="comment">//node_modules内的依赖库</span></span><br><span class="line">                    chunks: <span class="string">'all'</span>,</span><br><span class="line">                    test: <span class="regexp">/[\\/](node_modules)[\\/]/</span>, <span class="comment">// 文件路径里面带有node_modules 都抽离出来做共通</span></span><br><span class="line">                    name: <span class="string">'vendor'</span>,</span><br><span class="line">                    minChunks: <span class="number">1</span>, <span class="comment">//被不同entry引用次数(import),1次的话没必要提取</span></span><br><span class="line">                    maxInitialRequests: <span class="number">5</span>,</span><br><span class="line">                    minSize: <span class="number">0</span>,</span><br><span class="line">                    priority: <span class="number">100</span>,</span><br><span class="line">                    <span class="comment">// enforce: true?</span></span><br><span class="line">                &#125;,</span><br><span class="line">                common: &#123;</span><br><span class="line">                    <span class="comment">// ‘src/js’ 下的js文件</span></span><br><span class="line">                    chunks: <span class="string">'all'</span>,</span><br><span class="line">                    test: <span class="regexp">/[\\/]src[\\/]js[\\/]/</span>, <span class="comment">//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,</span></span><br><span class="line">                    name: <span class="string">'common'</span>, <span class="comment">//生成文件名，依据output规则</span></span><br><span class="line">                    minChunks: <span class="number">2</span>,</span><br><span class="line">                    maxInitialRequests: <span class="number">5</span>,</span><br><span class="line">                    minSize: <span class="number">0</span>,</span><br><span class="line">                    priority: <span class="number">1</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        runtimeChunk: &#123;</span><br><span class="line">            name: <span class="string">'manifest'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一开始我对于这个属性的名字难以理解，以至于没有效果,看了下面的文章后全明白了。</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/3066d96aec8b" target="_blank" rel="noopener">公共代码抽取说明</a></li>
+</ul>
+</li>
+<li><p>效果图如下<br><img src="/2019/05/16/20190516-vueSpeedUp/G3.jpg" alt="JS文件的依赖关系图2"></p>
+</li>
+<li><p>JS文件大小<br><img src="/2019/05/16/20190516-vueSpeedUp/G4.jpg" alt="JS文件大小2"></p>
+</li>
+</ul>
+<ol start="5">
+<li>分析包大小问题</li>
+</ol>
+<ul>
+<li>从上面的依赖效果图可以明显的看出，有几个包特别大，特别显眼<ul>
+<li>ant-design的Icons文件</li>
+<li>moment文件</li>
+<li>quill文件</li>
+<li>highlight.js文件</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li>ant-design的Icons文件优化</li>
+</ol>
+<ul>
+<li>这是ant-design的一个<a href="https://github.com/ant-design/ant-design/issues/12011" target="_blank" rel="noopener">问题</a></li>
+<li>而关于上面的问题，我建议你们直接看链接最下面的部分。（上面的一群人聊了半天，不知所以然，各种链接来回跳，也没找到结果）</li>
+<li>核心的几句话。<br><img src="/2019/05/16/20190516-vueSpeedUp/G5.png" alt="JS解决方案"><br><img src="/2019/05/16/20190516-vueSpeedUp/G6.png" alt="TS解决方案"></li>
+<li>通过了自己的理解，一个要自己引入相应的Icon，另一个是要在webpack里面进行配置</li>
+<li><p>增加antdIcon.ts代码，引入相应的Icon</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己项目里面用到的Icon</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> FileOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/FileOutline'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// antd的message组建内部用到的Icon 把源代码复制过来。</span></span><br><span class="line"><span class="comment">// var iconType = &#123;</span></span><br><span class="line"><span class="comment">//     info: 'info-circle',</span></span><br><span class="line"><span class="comment">//     success: 'check-circle',</span></span><br><span class="line"><span class="comment">//     error: 'close-circle',</span></span><br><span class="line"><span class="comment">//     warning: 'exclamation-circle',</span></span><br><span class="line"><span class="comment">//     loading: 'loading'</span></span><br><span class="line"><span class="comment">// &#125;[args.type]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2019/5/20改正，有些Icon没引全，导致message里面有些图标出不来，这个把相关的全引了。</span></span><br><span class="line"><span class="comment">// message info</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> InfoCircleOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/InfoCircleOutline'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> InfoCircleFill,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/fill/InfoCircleFill'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> InfoCircleTwoTone,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/twotone/InfoCircleTwoTone'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message success</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CheckCircleOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/CheckCircleOutline'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CheckCircleFill,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/fill/CheckCircleFill'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CheckCircleTwoTone,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/twotone/CheckCircleTwoTone'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message error</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CloseCircleOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/CloseCircleOutline'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CloseCircleFill,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/fill/CloseCircleFill'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> CloseCircleTwoTone,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/twotone/CloseCircleTwoTone'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message warning</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> ExclamationCircleOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/ExclamationCircleOutline'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> ExclamationCircleFill,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/fill/ExclamationCircleFill'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message loading</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">as</span> LoadingOutline,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@ant-design/icons/lib/outline/LoadingOutline'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 webpack 配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        modules: [path.resolve(__dirname, <span class="string">'./src'</span>), <span class="string">'node_modules'</span>], <span class="comment">// &lt;- 追加代码</span></span><br><span class="line">        extensions: [<span class="string">'.ts'</span>, <span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>], <span class="comment">// &lt;- 追加代码</span></span><br><span class="line">        alias: &#123;</span><br><span class="line">            vue$: <span class="string">'vue/dist/vue.esm.js'</span>,</span><br><span class="line">            <span class="string">'@ant-design/icons/lib/dist$'</span>: path.resolve(__dirname, <span class="string">'./src/tools/antdIcon.ts'</span>), <span class="comment">// &lt;- 追加代码</span></span><br><span class="line">        &#125;,</span><br><span class="line">        plugins: [ <span class="comment">// &lt;- 追加代码</span></span><br><span class="line">            <span class="keyword">new</span> TsconfigPathsPlugin(&#123;</span><br><span class="line">                configFile: path.resolve(__dirname, <span class="string">'./tsconfig.json'</span>),</span><br><span class="line">            &#125;),</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再一次编译,是不是发现已经看不到Icon了，本来就应该这样，我的项目中根本没用几个Icon<br><img src="/2019/05/16/20190516-vueSpeedUp/G7.png" alt="依赖效果图3"></p>
+</li>
+<li><p>JS文件的大小,直接减少了500K左右<br><img src="/2019/05/16/20190516-vueSpeedUp/G8.png" alt="JS文件大小3"></p>
+</li>
+</ul>
+<ol start="7">
+<li>moment文件优化</li>
+</ol>
+<ul>
+<li>这是个Ant-design内部依赖的语言文件，我的程序里面本身没有引用，我主要用到的是里面的中文，所以，中文以外的我全部在webpack里面设置忽略就行了<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="comment">// 只读取（zh-cn）文件。</span></span><br><span class="line">        <span class="keyword">new</span> webpack.ContextReplacementPlugin(<span class="regexp">/moment[\\\/]locale$/</span>, /^\.\/(zh-cn)$/),</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="8">
+<li>quill文件优化</li>
+</ol>
+<ul>
+<li><p>这个是我用到的富文本功能，本身对这个组件不太了解，但又必须要用到，也没什么太好优化方法，索性，把它抽离成一个单独的共通JS文件，这样起码有2个组建同时调用这个富文本的情况下，只有第一个掉用的那个需要引入JS文件，第二次的那个会直接利用浏览器的缓存来调用这个JS文件的，也有一定程度的优化效果。</p>
+</li>
+<li><p>所以我修改了抽离共通组件的那部分代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    optimization: &#123;</span><br><span class="line">        splitChunks: &#123;</span><br><span class="line">            cacheGroups: &#123;</span><br><span class="line">                vendor: &#123;</span><br><span class="line">                    chunks: <span class="string">'all'</span>,</span><br><span class="line">                    test: <span class="regexp">/[\\/](quill)[\\/]/</span>, <span class="comment">// &lt;- 就是简单修改了下匹配规则</span></span><br><span class="line">                    name: <span class="string">'vendor'</span>,</span><br><span class="line">                    minChunks: <span class="number">1</span>,</span><br><span class="line">                    maxInitialRequests: <span class="number">5</span>,</span><br><span class="line">                    minSize: <span class="number">0</span>,</span><br><span class="line">                    priority: <span class="number">100</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">                common: &#123;</span><br><span class="line">                    chunks: <span class="string">'all'</span>,</span><br><span class="line">                    test: <span class="regexp">/[\\/]src[\\/]js[\\/]/</span>,</span><br><span class="line">                    name: <span class="string">'common'</span>,</span><br><span class="line">                    minChunks: <span class="number">2</span>,</span><br><span class="line">                    maxInitialRequests: <span class="number">5</span>,</span><br><span class="line">                    minSize: <span class="number">0</span>,</span><br><span class="line">                    priority: <span class="number">1</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        runtimeChunk: &#123;</span><br><span class="line">            name: <span class="string">'manifest'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>7和8修改之后的效果<br><img src="/2019/05/16/20190516-vueSpeedUp/G9.png" alt="依赖关系效果图4"></p>
+</li>
+<li><p>7和8修改之后的JS文件大小<br><img src="/2019/05/16/20190516-vueSpeedUp/G10.png" alt="JS文件大小4"></p>
+</li>
+</ul>
+<ol start="9">
+<li>highlight.js文件优化</li>
+</ol>
+<ul>
+<li>这个主要是我用markdown编辑器的时候，用来给文字着色的。没有这个，在编写markdown的时候，内容非常的丑陋。</li>
+<li>但是这个东西的语法太多了，导致这个包非常的大，我编写的时候，只需要利用其中的几种情况而已，我先随便定几种情况，反正是自己的项目，有不够的以后随时再追加（正式项目的话请做好调研）</li>
+<li><p><a href="https://www.npmjs.com/package/highlight.js" target="_blank" rel="noopener">highlight.js官方说明</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按需加载的写法</span></span><br><span class="line"><span class="keyword">import</span> hljs <span class="keyword">from</span> <span class="string">'highlight.js/lib/highlight'</span>;</span><br><span class="line"><span class="keyword">import</span> javascript <span class="keyword">from</span> <span class="string">'highlight.js/lib/languages/javascript'</span>;</span><br><span class="line">hljs.registerLanguage(<span class="string">'javascript'</span>, javascript);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改完文件以后再看依赖关系<br><img src="/2019/05/16/20190516-vueSpeedUp/G11.png" alt="依赖关系效果图5"></p>
+</li>
+<li><p>JS文件大小<br><img src="/2019/05/16/20190516-vueSpeedUp/G12.png" alt="JS文件大小5"></p>
+</li>
+<li><p>至此，我觉得以我现在的水平代码已经没有什么好调整了，main文件还是有点大，我也已经尽力了。</p>
+</li>
+</ul>
+<ol start="10">
+<li>服务开启Gzip代码压缩</li>
+</ol>
+<ul>
+<li>我用的是nginx服务器，它可以开启Gzip，代码压缩率非常可观。200k文件直接被它压缩到几十k。</li>
+<li><p>原本还有点小卡的网站，在启用了Gzip之后，变得一点也不卡了。</p>
+</li>
+<li><p>修改nginx配置，这里有个小的坑（最后还给我来一个坑），随便找个网站复制下，大致都长下面这样，最后要重启nginx服务，让它读取最新配置<code>nginx -s reload</code>。如果你用的是<code>docker</code>请输入<code>docker exec -it 容器名字 service nginx reload</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gzip on;</span><br><span class="line">gzip_min_length  5k;</span><br><span class="line">gzip_buffers     4 16k;</span><br><span class="line"><span class="meta">#</span>gzip_http_version 1.0;</span><br><span class="line">gzip_comp_level 3;</span><br><span class="line">gzip_types       text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line">gzip_vary on;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>坑在哪里？你自己看吧，说出来都是泪啊<a href="https://blog.csdn.net/hl_java/article/details/81946228" target="_blank" rel="noopener">坑</a></p>
+</li>
+<li><p>Gzip有啥缺点？ 我也不太清楚，第一应该是它不支持IE6以及IE6以下的浏览器。还有人说他不利于SEO，但也有人说他利于SEO，是真是假去问百度。网上大部分人觉的他的优点大于缺点。</p>
+</li>
+<li><p>谢谢大家。</p>
+</li>
+</ul>
+
+            <span style="float:right;" id="/2019/05/16/20190516-vueSpeedUp/" class="leancloud_visitors" data-flag-title="Vue发布过程中遇到坑，以及webpack打包优化">
+                <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
+                <i style="font-style:normal;" class="leancloud-visitors-count">1</i>:次
+            </span>
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "小沈"
+        },
+        "headline": "Vue发布过程中遇到坑，以及webpack打包优化",
+        "image": "http://shenxf.top/2019/05/16/20190516-vueSpeedUp/G1.jpg",
+        "keywords": "vue webpack 性能调优",
+        "genre": "文章",
+        "datePublished": "2019-05-16",
+        "dateCreated": "2019-05-16",
+        "dateModified": "2019-05-28",
+        "url": "http://shenxf.top/2019/05/16/20190516-vueSpeedUp/",
+        "description": "前言
+这段时间，本人自己做了一个vue画面部署到自己的服务器上，发现运行速度慢的的惊人，虽然服务器很渣（本人没什么钱，只能租最差的服务器，主要是给自己学习用的），但是这样开发出来的网站简直不能用，所以就查阅各种资料和网站，一步一步把代码包优化。这篇文章主要是把我调优的过程记录下来。
+项目的基础框架是通过TypeScript官网取得的。各种基础框架模版
+项目的构成 vue + ant-design "
+        "wordCount": 2308
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/shen1986" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/05/29/20190529-seoStudy/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            seo学习
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/04/23/20190423-siteMemo/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">前端网站整理</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            shenxf1986@qq.com
+        </div>
+        <a href="javascript:;" id="showLive2d" style="color: #006bde;text-decoration: none;">显示博客MM</a>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/29/20190529-seoStudy/" class="title">seo学习</a></p>
+                            <p class="item-date"><time datetime="2019-05-29T04:12:26.000Z" itemprop="datePublished">2019-05-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/16/20190516-vueSpeedUp/" class="title">Vue发布过程中遇到坑，以及webpack打包优化</a></p>
+                            <p class="item-date"><time datetime="2019-05-16T12:06:24.000Z" itemprop="datePublished">2019-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/网站开发/">网站开发</a></p>
+                            <p class="item-title"><a href="/2019/04/23/20190423-siteMemo/" class="title">前端网站整理</a></p>
+                            <p class="item-date"><time datetime="2019-04-23T05:56:47.000Z" itemprop="datePublished">2019-04-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/22/20190422-vscode/" class="title">使用vscode时，如何在.vue文件中使用html代码补全功能</a></p>
+                            <p class="item-date"><time datetime="2019-04-22T02:47:43.000Z" itemprop="datePublished">2019-04-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/17/20190417-regular/" class="title">常用正则</a></p>
+                            <p class="item-date"><time datetime="2019-04-17T01:36:14.000Z" itemprop="datePublished">2019-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全/" style="font-size: 10px;">html代码补全</a> <a href="/tags/html代码补全功能/" style="font-size: 10px;">html代码补全功能</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo优化/" style="font-size: 10px;">seo优化</a> <a href="/tags/seo学习/" style="font-size: 10px;">seo学习</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端网站/" style="font-size: 10px;">前端网站</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/性能调优/" style="font-size: 10px;">性能调优</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a> <a href="/tags/网址/" style="font-size: 10px;">网址</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://ohs-sys.com">上海冈三华大计算机技术有限公司</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity: 0.8"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 小沈</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计代码-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http:/shenxf.top/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
+</script>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: '',
+            avatar_cdn:  '',
+            visitor: true
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
