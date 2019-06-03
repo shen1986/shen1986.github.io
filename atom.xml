@@ -127,9 +127,9 @@
       <category term="文章" scheme="http://shenxf.top/categories/%E6%96%87%E7%AB%A0/"/>
     
     
-      <category term="vue" scheme="http://shenxf.top/tags/vue/"/>
-    
       <category term="vscode" scheme="http://shenxf.top/tags/vscode/"/>
+    
+      <category term="vue" scheme="http://shenxf.top/tags/vue/"/>
     
       <category term="html代码补全" scheme="http://shenxf.top/tags/html%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8/"/>
     
