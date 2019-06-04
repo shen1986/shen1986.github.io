@@ -2,6 +2,10 @@
     display: none;
 }
 
-.vsubmit .vbtn {
+#valine-thread .vsubmit {
     display: none;
+}
+
+#valine-thread .vsubmit.mybtn {
+    display: inline-block;
 }
