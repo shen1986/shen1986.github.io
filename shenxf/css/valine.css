@@ -1,3 +1,7 @@
 .info {
     display: none;
 }
+
+.vsubmit .vbtn {
+    display: none;
+}
