@@ -1,0 +1,1141 @@
+<!--
+ * @Description: 头部
+ * @Author: shenxf
+ * @Date: 2019-03-04 13:52:10
+ -->
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>JavaScript_可维护_编写可维护的JavaScript | 小沈的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="JavaScript,可维护">
+    
+    <meta name="description" content="边看书边做笔记，这个仓库主要是参照《编写可维护的JavaScript》这本书，来总结自己的学习笔记。只是自己的总结，和书本不一样，如果觉得不错，你可以购买这本书自己研究。书本还涉及到JSLint，JSHint中的区别。实例代码从哪里取材，各种组织或公司的代码风格，并进行比较以及总结。对于某些写法的观点有时有些模棱两可，我自己的总结没有这些东西，更偏向与自己怎么写。 最后，我写这篇东西也不容易，如果">
+<meta name="keywords" content="JavaScript,可维护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript_可维护_编写可维护的JavaScript">
+<meta property="og:url" content="http://shenxf.top/2019/06/10/20190610-MaintainableJavaScript/index.html">
+<meta property="og:site_name" content="小沈的个人博客">
+<meta property="og:description" content="边看书边做笔记，这个仓库主要是参照《编写可维护的JavaScript》这本书，来总结自己的学习笔记。只是自己的总结，和书本不一样，如果觉得不错，你可以购买这本书自己研究。书本还涉及到JSLint，JSHint中的区别。实例代码从哪里取材，各种组织或公司的代码风格，并进行比较以及总结。对于某些写法的观点有时有些模棱两可，我自己的总结没有这些东西，更偏向与自己怎么写。 最后，我写这篇东西也不容易，如果">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-10T06:16:46.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript_可维护_编写可维护的JavaScript">
+<meta name="twitter:description" content="边看书边做笔记，这个仓库主要是参照《编写可维护的JavaScript》这本书，来总结自己的学习笔记。只是自己的总结，和书本不一样，如果觉得不错，你可以购买这本书自己研究。书本还涉及到JSLint，JSHint中的区别。实例代码从哪里取材，各种组织或公司的代码风格，并进行比较以及总结。对于某些写法的观点有时有些模棱两可，我自己的总结没有这些东西，更偏向与自己怎么写。 最后，我写这篇东西也不容易，如果">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="小沈的个人博客" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/live2d/css/live2d.css">
+    <link rel="stylesheet" href="/shenxf/css/valine.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?84db2c117432e9204ade2d7370b591ab";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8316273523263794",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <!-- 百度自动推送 -->
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">发表文章，自己的想法，学习分享</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/博客/">博客</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/网站开发/">网站开发</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20190610-MaintainableJavaScript" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        JavaScript_可维护_编写可维护的JavaScript
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/06/10/20190610-MaintainableJavaScript/" class="article-date">
+            <time datetime="2019-06-10T06:15:12.000Z" itemprop="datePublished">2019-06-10</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/可维护/">可维护</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>边看书边做笔记，这个仓库主要是参照《编写可维护的JavaScript》这本书，来总结自己的学习笔记。<br>只是自己的总结，和书本不一样，如果觉得不错，你可以购买这本书自己研究。书本还涉及到JSLint，JSHint<br>中的区别。实例代码从哪里取材，各种组织或公司的代码风格，并进行比较以及总结。对于某些写法的观点有时有些模棱两可，我自己的总结没有这些东西，更偏向与自己怎么写。</p>
+<p>最后，我写这篇东西也不容易，如果感觉不错，请点<code>Star</code>,谢谢大家。</p>
+<h2 id="编程风格"><a href="#编程风格" class="headerlink" title="编程风格"></a>编程风格</h2><ol>
+<li><p>基本的格式化</p>
+<ul>
+<li><a href="#缩进层级">缩进层级</a></li>
+<li><a href="#语句结尾">语句结尾</a></li>
+<li><a href="#行的长度">行的长度</a></li>
+<li><a href="#换行">换行</a></li>
+<li><a href="#空行">空行</a></li>
+<li><a href="#命名">命名</a><ul>
+<li><a href="#变量和函数">变量和函数</a></li>
+<li><a href="#常量">常量</a></li>
+<li><a href="#构造函数">构造函数</a></li>
+</ul>
+</li>
+<li><a href="#直接量">直接量</a><ul>
+<li><a href="#字符串">字符串</a></li>
+<li><a href="#数字">数字</a></li>
+<li><a href="#null">null</a></li>
+<li><a href="#undefined">undefined</a></li>
+<li><a href="#对象直接量">对象直接量</a></li>
+<li><a href="#数组直接量">数组直接量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注释</p>
+<ul>
+<li><a href="#单行注释">单行注释</a></li>
+<li><a href="#多行注释">多行注释</a></li>
+<li><a href="#使用注释">使用注释</a><ul>
+<li><a href="#难以理解的代码">难以理解的代码</a></li>
+<li><a href="#可能被误认为错误的代码">可能被误认为错误的代码</a></li>
+<li><a href="#游览器特性hack">游览器特性hack</a></li>
+</ul>
+</li>
+<li><a href="#文档注释">文档注释</a></li>
+</ul>
+</li>
+<li><p>语句和表达式</p>
+<ul>
+<li><a href="#花括号的对齐方式">花括号的对齐方式</a></li>
+<li><a href="#块语句的间隔">块语句的间隔</a></li>
+<li><a href="#switch语句">switch语句</a><ul>
+<li><a href="#缩进">缩进</a></li>
+<li><a href="#case语句的连续执行">case语句的“连续执行”</a></li>
+<li><a href="#default">default</a></li>
+</ul>
+</li>
+<li><a href="#with语句">with语句</a></li>
+<li><a href="#for循环">for循环</a></li>
+<li><a href="#for-in循环">for-in循环</a></li>
+</ul>
+</li>
+<li><p>变量、函数和运算符</p>
+<ul>
+<li><a href="#变量声明">变量声明</a></li>
+<li><a href="#函数声明">函数声明</a></li>
+<li><a href="#函数调用间隔">函数调用间隔</a></li>
+<li><a href="#立即调用的函数">立即调用的函数</a></li>
+<li><a href="#严格模式">严格模式</a></li>
+<li><a href="#相等">相等</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="缩进层级"><a href="#缩进层级" class="headerlink" title="缩进层级"></a>缩进层级</h3><ul>
+<li>缩进层级非常重要，弄的不好，容易造成很多误解。<br>下这段代码 (为了演示,.这里故意修改了示例代码的缩进〕。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wl &amp;&amp; wl.length) &#123;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>, <span class="number">1</span> = wl.length; i &lt; <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        p = wl[i];</span><br><span class="line">        type = Y.Lang.type(r[p]);</span><br><span class="line">        <span class="keyword">if</span> (s.hasOwnProperty(p)) &#123; <span class="keyword">if</span> (merge &amp;&amp; type == <span class="string">'object'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    Y.mix(r(p], s&#123;p]);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (ov || !(p <span class="keyword">in</span> r)) &#123;</span><br><span class="line">                    r[p] = s[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>快速读憧这段代码井不容易。 这里的缩进并不统一,一眼看去 else 是对应到第 1<br>行的if语句。 但实际上这个 else 和代码第 5行的if语句相对应。 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wl &amp;&amp; wl.length) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, <span class="number">1</span> = wl.length; i &lt; <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        p = wl[i];</span><br><span class="line">        type = Y.Lang.type(r[p]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.hasOwnProperty(p)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (merge &amp;&amp; type == <span class="string">'object'</span>) &#123;</span><br><span class="line">                Y.mix(r[p], s[p]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ov || !(p <span class="keyword">in</span> r)) &#123;</span><br><span class="line">                r[p] = s[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>有两种主张</p>
+<ul>
+<li>使用制表符进行缩进<ul>
+<li>就是[tab]进行缩进</li>
+</ul>
+</li>
+<li>使用空格进行缩进<ul>
+<li>一般是以4个空格进行缩进</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>以上两种方法都可以，但是不要两种方法混用。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="语句结尾"><a href="#语句结尾" class="headerlink" title="语句结尾"></a>语句结尾</h3><ul>
+<li>在javascript里面可以不以分号结尾。分析器会自动在结尾加上分号。</li>
+<li>但是不推荐这种做法。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原始代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">    &#123;</span><br><span class="line">        title: <span class="string">"Maintainable JavaScript"</span>,</span><br><span class="line">        author: <span class="string">"Nicholas C. Zakas"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分析器会将它理解成</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        title: <span class="string">"Maintainable JavaScript"</span>,</span><br><span class="line">        author: <span class="string">"Nicholas C. Zakas"</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以上面的例子来讲，函数将返回一个undefined，这不是我们要的结果。<br>虽然可以将 <code>{</code> 放到 <code>return</code> 之后，但是分析器的判断比较复杂，不能保证我们<br>能考虑到所有的情况。</li>
+<li><p>所有我们应该更加倾向于使用它们，而不是省略它们。</p>
+</li>
+<li><p>上面是书的作者的看法，我确实看到一种风格是结尾一律不加分号，这种写法要求在语句是以<code>[</code>,<code>(</code>,`开头的时候，在前面加上分号。</p>
+</li>
+<li>而且推荐这种做法的人认为，不加分号反而不容易出错。像类似于上面的错误是不会被忽略到上线阶段的，当你创建了一个方法，没有得到你想要的结果，应该在开发的时候就立即被发现了。</li>
+<li>就算使用了加了分号的规范，有时也会因为不小心而漏掉（用检测工具的没有这个问题）</li>
+<li><p>最后，使用的第三方代码不一定是加分号的风格。有可能还是不得不在第一个位置加上分号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这些语句与上一句没有分号的语句连接的话会直接报错，所以必须加分号</span></span><br><span class="line"></span><br><span class="line">;[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].foreach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 处理内容</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">;<span class="string">`shenxf<span class="subst">$&#123;nickname&#125;</span>`</span>.length</span><br><span class="line"></span><br><span class="line"><span class="comment">// 很多代码都习惯于在圆括号之前加一个分号，这是由于之前引入的代码可能有漏了分号的情况，</span></span><br><span class="line"><span class="comment">// 为了以防万一，都会有类似于下面的代码。</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 处理内容。</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我比较喜欢不省略分号，如果想采用省略分号的规范，切记在<code>[</code>,<code>(</code>,`之前加上分号。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="行的长度"><a href="#行的长度" class="headerlink" title="行的长度"></a>行的长度</h3><ul>
+<li>如果一行的内容太长，编辑窗口就会出现滚动条。这样不利于我们查看代码，也比较变扭。<br>我们应该规定我们一行的长度不要超过80个字符。超过80个字符应该折行。这是因为很多编辑器是<br>在80个字符以后出现滚动条</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
+<li>当一行的长度太长我们就会进行折行。通常要在运算符后面换行，这是因为分析器不会再运算符后面自动加分号。<br>不容易出错。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的做法：在运算符后面换行。 第二行追加二个缩进</span></span><br><span class="line">callAFunction(<span class="built_in">document</span>, element, <span class="built_in">window</span>, <span class="string">"some string value"</span>, <span class="literal">true</span>, <span class="number">123</span>,</span><br><span class="line">        navigator);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的做法第二行只有一个缩进</span></span><br><span class="line">callAFunction(<span class="built_in">document</span>, element, <span class="built_in">window</span>, <span class="string">"some string value"</span>, <span class="literal">true</span>, <span class="number">123</span>,</span><br><span class="line">    navigator);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的做法运算符之前换行了</span></span><br><span class="line">callAFunction(<span class="built_in">document</span>, element, <span class="built_in">window</span>, <span class="string">"some string value"</span>, <span class="literal">true</span>, <span class="number">123</span></span><br><span class="line">    , navigator);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为什么要二个缩进</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isLeapYear &amp;&amp; isFebruary &amp;&amp; day &amp;&amp; day ==<span class="number">29</span> &amp;&amp; itsYourBirthdady &amp;&amp;</span><br><span class="line">        noPlans) &#123;</span><br><span class="line">    </span><br><span class="line">    waitAnotherFourYears();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从上面的代码可以看出，二个缩进正好和条件内部语句的一个缩进错开，这样更容易阅读。</li>
+<li>但是有一个例外。在赋值语句后面的第二行位置最好要对齐</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = something + anotherThing + yetAnotherThing + someThingElse +</span><br><span class="line">             anotherSomethingElse;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h3><ul>
+<li>空行常常被忽略，代码看起来应该像一段一段可读的代码，而不是全部糅合在一块。拿缩进层级的例子来说</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wl &amp;&amp; wl.length) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, <span class="number">1</span> = wl.length; i &lt; <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        p = wl[i];</span><br><span class="line">        type = Y.Lang.type(r[p]);</span><br><span class="line">        <span class="keyword">if</span> (s.hasOwnProperty(p)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (merge &amp;&amp; type == <span class="string">'object'</span>) &#123;</span><br><span class="line">                Y.mix(r[p], s[p]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ov || !(p <span class="keyword">in</span> r)) &#123;</span><br><span class="line">                r[p] = s[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给这段代码加上空行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wl &amp;&amp; wl.length) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, <span class="number">1</span> = wl.length; i &lt; <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        p = wl[i];</span><br><span class="line">        type = Y.Lang.type(r[p]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.hasOwnProperty(p)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (merge &amp;&amp; type == <span class="string">'object'</span>) &#123;</span><br><span class="line">                Y.mix(r[p], s[p]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ov || !(p <span class="keyword">in</span> r)) &#123;</span><br><span class="line">                r[p] = s[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样看上去能够更加流畅的阅读，一般来讲下面的场景添加空行是不错的注意<ul>
+<li>在方法之间。</li>
+<li>在方法中的局部变量和第一条语句之间。</li>
+<li>在多行或则单行注释之前。</li>
+<li>在方法的逻辑片段之间插入空行，提高可读性。</li>
+</ul>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><ul>
+<li>JavaScript语言核心是ECMAScript，遵照了驼峰式大小写命名法（这个太有名了我就不解释了）</li>
+<li>一般是遵循语言核心所采用的命名规范，因此大部分JavaScript程序员使用驼峰命名法给变量和函数命名。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="变量和函数"><a href="#变量和函数" class="headerlink" title="变量和函数"></a>变量和函数</h4><ul>
+<li>变量的命名前缀应该是名词，这能后和函数的命名规则区分开，函数应该以动词来做前缀。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> myName = <span class="string">"shenxf"</span>;</span><br><span class="line"><span class="keyword">var</span> found = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法: 变量看起来像函数</span></span><br><span class="line"><span class="keyword">var</span> getCount = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> isFound = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> myName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> myName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>命名应该要尽量短小精干，例如，count，length和size一看就知道是数字类型，name，title，和message一看就知道是字符串类型</li>
+<li>i，j，k通常在循环处理中使用。</li>
+<li><p>要经量避免写无意义的命名。</p>
+</li>
+<li><p>对于方法的命名，第一个单词应该是动词。下面是一些常见的约定</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>含义 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>can</td>
+<td>函数返回一个布尔值</td>
+</tr>
+<tr>
+<td>has</td>
+<td>函数返回一个布尔值</td>
+</tr>
+<tr>
+<td>is</td>
+<td>函数返回一个布尔值</td>
+</tr>
+<tr>
+<td>get</td>
+<td>函数返回一个非布尔值</td>
+</tr>
+<tr>
+<td>set</td>
+<td>函数用来保存一个值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>按照上面的写法，可读性会很好</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isEnabled()) &#123;</span><br><span class="line">    setName(<span class="string">"shenxf"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (getName() === <span class="string">"shenxf"</span>) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>在ECMAScript6之前，JavaScript没有真正常量的概念。为了区分普通的变量和常量，<br>用类似于C语言方法来命名，用大写字母和下划线来命名，下划线是用来分隔单词的。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MAX_COUNT = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> URL = <span class="string">"http://shenxf.top"</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>来看一下代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (count &lt; MAX_COUNT) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><ul>
+<li>构造函数遵照大驼峰命名法。主要是为了和函数与变量的命名法进行区分。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的做法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> me = <span class="keyword">new</span> Person(<span class="string">"shenxf"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样写可以快速的发现问题，看一下下面的代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> me = Person(<span class="string">"shenxf"</span>); <span class="comment">// 这里缺少了new</span></span><br><span class="line"><span class="keyword">var</span> you = getPerson(<span class="string">"xx"</span>);</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="直接量"><a href="#直接量" class="headerlink" title="直接量"></a>直接量</h3><ul>
+<li>JavaScript里面的原始值包括：字符串、数字、布尔值、null和undefined。也包含对象和数组的直接量。</li>
+<li>其中只有布尔值是自解释的，其他的多少要考虑下如何能准确地表达其中的含义。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><ul>
+<li>这里原书的作者提出可以用双引号和单引号。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面都是合法的javascript代码</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"shenxf says, \"Hi.\""</span>;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'shenxf says, "Hi."'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>书的作者经常使用Java，Java是用双引号来表示字符串。所以作者推荐使用双引号，因为可以和Java语言保持一致。</li>
+<li><p>我个人推荐使用单引号，本人之前使用的很多编码规范插件都是以单引号来声明变量的。我已经习惯了，所以我推荐使用单引号。不管使用哪一种，自己的代码风格保持一致我觉得就可以了。</p>
+</li>
+<li><p>当字符串换行的时候，应该使用运算符来连接。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="keyword">var</span> longString = <span class="string">"Here's the story, of a man \</span></span><br><span class="line"><span class="string">named Brady."</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> longString = <span class="string">"Here's the story, of a man"</span> +</span><br><span class="line">                 <span class="string">"named Brady."</span>;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><ul>
+<li>直接给列子</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 整数</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小数</span></span><br><span class="line"><span class="keyword">var</span> price = <span class="number">10.0</span>;</span><br><span class="line"><span class="keyword">var</span> price = <span class="number">10.00</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不推荐小数的写法：没有小数部分</span></span><br><span class="line"><span class="keyword">var</span> pricee = <span class="number">10.</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不推荐小数的写法：没有整数部分</span></span><br><span class="line"><span class="keyword">var</span> price = <span class="number">.1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不推荐的写法：八进制写法已经被弃用</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六进制写法</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0xA2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 科学计数法</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">1e23</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不推荐写法的前两个感觉特别变扭，不知道是刻意写的还是漏掉的。为了避免歧义，所以不推荐。</li>
+<li>八进制的写法也很容易产生歧义，很有可能被认为是整数<code>10</code>，其实是<code>8</code>,所以不推荐。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="null"><a href="#null" class="headerlink" title="null"></a>null</h4><ul>
+<li><p>null比较特殊经常和undefined混淆。</p>
+</li>
+<li><p>应该使用null的场景</p>
+<ul>
+<li>用来初始化一个变量，这个变量可能被赋值为一个对象</li>
+<li>用来和一个已经初始化的变量比较，这个变量可以是也可以不是一个对象</li>
+<li>当函数的参数期望是对象时，用作参数传入</li>
+<li>当函数的返回值期望是对象时，用作返回值传出</li>
+</ul>
+</li>
+<li><p>不应该使用null的场景</p>
+<ul>
+<li>不要使用null来检测是否传入了某个参数</li>
+<li>不要用null来检测一个未初始化的变量</li>
+</ul>
+</li>
+<li><p>例子</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 好的用法</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的用法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPerson</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person(<span class="string">"shenxf"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的用法</span></span><br><span class="line"><span class="keyword">var</span> person = getPerson();</span><br><span class="line"><span class="keyword">if</span> (person !== <span class="literal">null</span>) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：用来和未初始化的变量进行比较</span></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"><span class="keyword">if</span> (person != <span class="literal">null</span>) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：检测是否传入了参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">arg1, arg2, arg3, arg4</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arg4 != <span class="literal">null</span>) &#123;</span><br><span class="line">        doSomethingElse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>理解<code>null</code>最好的方法是把它理解成一个占位符</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h4><ul>
+<li>最让人困惑的是 <code>null == undefined</code> 的结果是<code>true</code>,然而，这2个值的用法各不相同。</li>
+<li>那些没有被初始化的变量都有一个初始值，即<code>undefined</code>,表示这个变量等待被赋值。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"><span class="built_in">console</span>.log(person === <span class="literal">undefined</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>虽然这是正常的代码，但是我们应该经量避免<code>undefined</code>.</li>
+<li>因为<code>undefined</code>有很多让人费解的地方，比如<code>typeof</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo未被声明</span></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> person); <span class="comment">// "undefined"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo);    <span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这段代码看似没什么，但是在某些场景下面有天壤之别（在语句中foo会报错，而person则不会）</li>
+<li>通过禁止使用特殊值<code>undefined</code>,可以使得<code>typeof</code>出来的结果只有一种可能出现<code>undefined</code>。那就是<br>变量未声明的时候。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的做法</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person === <span class="literal">null</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>typeof null</code>值返回的是<code>Object</code>,这样可以避开<code>undefined</code>,这样就区分开了。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="对象直接量"><a href="#对象直接量" class="headerlink" title="对象直接量"></a>对象直接量</h4><ul>
+<li>有直接量的东西，最好不要先创建然后再赋值。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="keyword">var</span> book = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">book.title = <span class="string">"shenxfsbook"</span>;</span><br><span class="line">book.author = <span class="string">"shenxf"</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接量可以高效的完成非直接量相同的任务。</li>
+<li>当定义直接量的时候，第一行包含左花括号，每一个属性的名值对都独占一行，并保持一个缩进，最后花括号也独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    title: <span class="string">"shenxfsbook"</span>,</span><br><span class="line">    author: <span class="string">"shenxf"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="数组直接量"><a href="#数组直接量" class="headerlink" title="数组直接量"></a>数组直接量</h4><ul>
+<li>和对象的直接量类似，不建议使用非直接量。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>);</span><br><span class="line"><span class="keyword">var</span> numbers = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一句单行注释</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>双斜杠后面最好预留一个空格</li>
+<li><p>单行注释 有3中使用方法</p>
+<ul>
+<li>独占一行注释，用来解释下一行代码，这行注释之前总是有一个空行，且缩进层级和下一行代码保持一致</li>
+<li>在代码行的尾部的注释。代码结束到注释之间至少有一个缩进。注释（包括之前的代码部分）不应当超过单行的最大字符数限制，如果超过了，就应该将这行注释放在代码行上方。</li>
+<li>被注释掉的大段代码（编译器自带的批量注释多行代码）</li>
+</ul>
+</li>
+<li><p>单行注释不应该用于多行，除非是注释的大段代码。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果代码执行到这里，则表示通过了左右的安全性检查</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：注释之前没有空行</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">// 如果代码执行到这里，则表示通过了左右的安全性检查</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：错误的缩进</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line"><span class="comment">// 如果代码执行到这里，则表示通过了左右的安全性检查</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> result = something + somethingElse; <span class="comment">// somethingElse不应当取值为null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：代码和注释之间没有间隔</span></span><br><span class="line"><span class="keyword">var</span> result = something + somethingElse;<span class="comment">// somethingElse不应当取值为null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="comment">// if (condition) &#123;</span></span><br><span class="line"><span class="comment">//     dosomething();</span></span><br><span class="line"><span class="comment">//     thenDoSomethingElse();</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法:这里应当用多行注释</span></span><br><span class="line"><span class="comment">// 接下来的这段代码非常难，那么，让我详细的解释下</span></span><br><span class="line"><span class="comment">// 这段代码首先判断条件是否为真</span></span><br><span class="line"><span class="comment">// 。。。。。。。</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">// 如果代码执行到这里，则表示通过了左右的安全性检查</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3><ul>
+<li>合法的多行注释</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 我的注释 */</span></span><br><span class="line"><span class="comment">/* 另一段注释</span></span><br><span class="line"><span class="comment">这个注释包含2行 */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">又是一段注释</span></span><br><span class="line"><span class="comment">这段注释同样包含2行</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这些注释都是合法但是看得不清晰，推荐使用类似于java的注释方法</li>
+<li>第一是<code>/*</code>,最后一行是<code>*/</code>，当中每一行都以<code>*</code>开头，且空开一个空格</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 另一段注释</span></span><br><span class="line"><span class="comment"> * 这个注释包含2行</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>多行注释应该和单行注释一样注释之前要有空行，注释用来说明下面行的代码，并与下一行保持同样的缩进</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 如果代码执行到这里</span></span><br><span class="line"><span class="comment">     * 说明通过了所有安全性检查</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：注释之前无空行</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 如果代码执行到这里</span></span><br><span class="line"><span class="comment">     * 说明通过了所有安全性检查</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：星号之后没有空格</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     *如果代码执行到这里</span></span><br><span class="line"><span class="comment">     *说明通过了所有安全性检查</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：错误的缩进</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 如果代码执行到这里</span></span><br><span class="line"><span class="comment"> * 说明通过了所有安全性检查</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    allowed();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：代码尾部不要用多行注释</span></span><br><span class="line"><span class="keyword">var</span> result = something + somethingElse; <span class="comment">/*somethingElse不应当取值为null*/</span></span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="使用注释"><a href="#使用注释" class="headerlink" title="使用注释"></a>使用注释</h3><ul>
+<li>代码不够清晰时应该添加注释，代码很明了的时候不应该添加注释，有点画蛇添足。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法：注释并没有提供有价值的信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化count</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变这个值可能会使它变成青蛙</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>因此，添加注释的原则是需要让代码变的更清晰的时候。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="难以理解的代码"><a href="#难以理解的代码" class="headerlink" title="难以理解的代码"></a>难以理解的代码</h4><ul>
+<li>难以理解的代码应该添加注释</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (mode) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 当 mode 为2时</span></span><br><span class="line"><span class="comment">     * 用来执行原型合并的操作。。。。</span></span><br><span class="line"><span class="comment">     * 。。。。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (mode === <span class="number">2</span>) &#123;</span><br><span class="line">        Y.mix(receiver.prototype, supplier.prototype, overwrite,</span><br><span class="line">                whitelis, <span class="number">0</span>, merge);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/*</span></span><br><span class="line"><span class="comment">      * 根据模式的类型。。。</span></span><br><span class="line"><span class="comment">      * 。。。。</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">    <span class="keyword">from</span> = mode === <span class="number">1</span> || mode === <span class="number">3</span> ? supplier.prototype : supperlier;</span><br><span class="line">    to   = mode === <span class="number">1</span> || mode === <span class="number">4</span> ? receiver.prototype : receiver;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * .......</span></span><br><span class="line"><span class="comment">     * ......</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">from</span> || !to) &#123;</span><br><span class="line">        <span class="keyword">from</span> = supperlier;</span><br><span class="line">        to   = receiver;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">from</span> = supplier;</span><br><span class="line">    to = receiver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="可能被误认为错误的代码"><a href="#可能被误认为错误的代码" class="headerlink" title="可能被误认为错误的代码"></a>可能被误认为错误的代码</h4><ul>
+<li>团队里面会有一些好心人，自主的把一个看上去错误代码改正，但是这段错误的往往并不是错误的源头</li>
+<li>修改了这段代码会导致另外的bug</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (element &amp;&amp; (element = element[asix])) &#123; <span class="comment">// 赋值操作</span></span><br><span class="line">    <span class="keyword">if</span>( (all || element[TAG_NAME]) &amp;&amp;</span><br><span class="line">        (!fn || fn(element)) ) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> element;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在这里例子里面作者写明了他是赋值操作，虽然这不是一种标准用法，检测工具可能会检测出问题</li>
+<li>很容易被误解成一个错误。这种注释就表明作者是有意为之。从而避免了不必要的误解。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="游览器特性hack"><a href="#游览器特性hack" class="headerlink" title="游览器特性hack"></a>游览器特性hack</h4><ul>
+<li>为了要兼容低版本的游览器，JavaScript程序员往往会写一些“可能被误认为错误的代码“。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ret = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( !needle || !element || !needle[NODE_TYPE] || !element[NODE_TYPE]) &#123;</span><br><span class="line">    ret = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element[CONTAINS]) &#123;</span><br><span class="line">    <span class="comment">// 如果needle不是ELEMENT_NODE时，IE和Safari下会有错误</span></span><br><span class="line">    <span class="keyword">if</span> (Y.UA.opera || needle[NODE_TYPE] === <span class="number">1</span>) &#123;</span><br><span class="line">        ret = element[CONTAINS](needle);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ret = Y_DOM._bruteContains(element, needle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element[COMPARE_DOCUMENT_POSITION]) &#123; <span class="comment">// gecko</span></span><br><span class="line">    <span class="keyword">if</span> (element === needle || !!(element[COMPARE_DOCUMENT_POSITION](needle) &amp; <span class="number">16</span>)) &#123;</span><br><span class="line">        ret = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第六行有一段重要的注释，尽管IE和Safari中都有内置的方法contains(),但是needle不是一个元素是，这个方法会报错</li>
+<li>所以只有当浏览器是Opera的时候才能用这个方法。这里说明了为什么要一个if语句。这样不会被别人误改动，而且以后浏览器要做相应的兼容性改动是也能快速的定位到这段代码，对自己的维护也是有好处的。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h3><ul>
+<li>虽然不是JavaScript的组成部分但是现在广泛的被运用，一般文档注释有多种格式，最流行的是源于JavaDoc文档格式：<ul>
+<li>多行注释以单斜线双星号<code>/**</code>开始，接下来是描述信息，其中<code>@</code>符号来表示一个或多个属性。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">返回一个对象，这个对象包含被提供对象的所有属性。</span></span><br><span class="line"><span class="comment">后一个对象的属性会覆盖前一个对象的属性。</span></span><br><span class="line"><span class="comment">传入一个单独对象。。。。</span></span><br><span class="line"><span class="comment">@method merge</span></span><br><span class="line"><span class="comment">@param &#123;Object&#125; 被合并的一个或多个对象</span></span><br><span class="line"><span class="comment">@param &#123;Object&#125; 一个新的合并后的对象</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line">Y.merge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args    = <span class="built_in">arguments</span>,</span><br><span class="line">        i       = <span class="number">0</span>,</span><br><span class="line">        len     = args.length,</span><br><span class="line">        result  = &#123;&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (; i&lt;len; ++i) &#123;</span><br><span class="line">        Y.mix(result, args[i], <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>你应当确保对如下的内容添加注释<ul>
+<li>所有的方法<ul>
+<li>应当对方法，期望的参数和可能的返回值添加注释描述。</li>
+</ul>
+</li>
+<li>所有的构造函数<ul>
+<li>应当对自定义类型和期望的参数添加注释描述。</li>
+</ul>
+</li>
+<li>所有包含文档化方法的对象<ul>
+<li>如果一个对象包含一个或多个附带文档注释的方法，那么这个对象也应当适当地针对文档生成工具添加文档注释。</li>
+<li>当然，注释的详细格式和用法最终还是由你所选择的文档生成工具决定的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="花括号的对齐方式"><a href="#花括号的对齐方式" class="headerlink" title="花括号的对齐方式"></a>花括号的对齐方式</h3><ul>
+<li><p>有2中风格</p>
+<ul>
+<li><p>第一个风格是，将左括号放置在第一句代码的末尾</p>
+<ul>
+<li>这种风格来自java<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    doSomethingElse();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>第二种风格是将左括号放置于块语句首行的下一行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    doSomethingElse();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这种风格是C#的风格，这种写法会导致，自动插入分号位置错误，所以JavaScript里不推荐用这种风格。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="块语句的间隔"><a href="#块语句的间隔" class="headerlink" title="块语句的间隔"></a>块语句的间隔</h3><ul>
+<li><p>有三种主要的风格</p>
+<ul>
+<li><p>第一种风格，在语句名，圆括号和左花括号之间没有空格间隔。</p>
+<ul>
+<li>这种风格可读性不好。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(condition)&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>第二种风格,在左圆括号之前和右圆括号之后各添加一个空格</p>
+<ul>
+<li>这种风格最流行。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>第三种风格，在左圆括号后和右圆括号前各添加一个空格</p>
+<ul>
+<li>这种写法可读性最高。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( condition ) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>本人和书的作者一样比较推荐第二种风格。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><ul>
+<li>JavaScript中的<code>switch</code>语句的行为和在其他语言中是不一样的：switch语句中可以使用任意类型值，任何表达式都可合法地用于case从句。但在其他语言中则必须使用原始值和常量。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h4><ul>
+<li><p>很多人用java的风格</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(condition) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"first"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"second"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"third"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>独特之处</p>
+<ul>
+<li>每条<code>case</code>语句相对于<code>switch</code>关键字都缩进一个层级。</li>
+<li>从第二条豫剧开始，每条<code>case</code>语句前后各有一个空行。</li>
+</ul>
+</li>
+<li><p>另一种风格</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(condition) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">"first"</span>:</span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="string">"second"</span>:</span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="string">"third"</span>:</span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不同之处是<code>case</code>关键字与<code>switch</code>保持左对齐，</p>
+</li>
+<li><p>我和作者都喜欢java的风格。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="case语句的“连续执行”"><a href="#case语句的“连续执行”" class="headerlink" title="case语句的“连续执行”"></a>case语句的“连续执行”</h4><ul>
+<li><code>case</code>后面不加<code>break</code>，就会连续执行下面的条件，这个成为很多系统bug的原罪。</li>
+<li><p>但是还是有许多人接受这种连续执行的编程方法。但是逻辑一定要写的清晰。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(condition) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 明显的依次执行</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"first"</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"second"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"third"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* fall through */</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前面2行代码是个很明显的连续执行，这是合理的。</p>
+</li>
+<li><code>third</code>里面由于添加了注释，说明这是有意为之。这也是合理的。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><ul>
+<li><p>比较有争论的议题是，是否需要<code>default</code>，很多人不论何时都不省略<code>default</code>，尽管它什么也不做。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(condition) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"first"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"second"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// default中没有逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>作者比较倾向于，没有默认行为，并且写了注释的情况下可以省略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(condition) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"first"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"second"</span>:</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 没有 default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样即表明了没有默认行为，又省下了字节。</p>
+</li>
+<li><p>我比较喜欢第一种，你可以只写<code>default:</code>不写注释。这样也清楚的知道没有默认行为，以后要加默认行为的时候可以少写一行代码。其实2种方法都可以，就看你喜欢哪一种。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h3><ul>
+<li>在没看这本书之前，我根本不知道这个东西，如果你和我一样，请跳过这一章（不知道也就不会用），这不是什么好东西。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    title: <span class="string">"shenxf javascrpt"</span>,</span><br><span class="line">    author: <span class="string">"shenxf"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> message = <span class="string">" The book is "</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> (book) &#123;</span><br><span class="line">    message += title;</span><br><span class="line">    message += <span class="string">" by "</span> + author;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>虽然写法上它可以让我们省略一些字节，但是这东西有坏处，我们很难分辨<code>title</code>和<code>author</code>出现在哪个位置，也难分辨出<code>message</code>到底是局部变量还是<code>book</code>的一个属性。从程序上来讲，JavaScript引擎和压缩工具无法对这段代码进行优化，应为它们无法猜出代码的真正含义。</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><ul>
+<li><p>for循环有两种，一种是传统的for循环，另外一种是for-in循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">    i, len;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=values.length; i &lt; len; i++) &#123;</span><br><span class="line">    process(values[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for循环中可以使用<code>break</code>和<code>continue</code>语句，相信大家肯定知道怎么用。</p>
+</li>
+<li><p>有一种风格中说不要用<code>continue</code>，用<code>continue</code>还不如用条件语句，逻辑更清晰。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">    i, len;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=values.length; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i !== <span class="number">2</span>) &#123;</span><br><span class="line">        process(values[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>书的作者没有明确表态，我认为这个不至于，想用还是可以用的。这个语句本身是没有问题的。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h3><ul>
+<li>相信大家都会用。for-in循环不仅仅遍历对象的实例属性，从原型链继承来的属性也会遍历。当遍历自定义对象的属性时往往会因为意外的结果而终止。因此，最好使用<code>hasOwnProperty()</code>方法来为for-in循环过滤出实例属性。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (prop <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (object.hasOwnProperty(prop)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Property name is "</span> + prop);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Property value is "</span> + object[prop]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一般都会加上<code>hasOwnProperty</code>，但是如果你就是想查找原型链，请加上注释。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (prop <span class="keyword">in</span> object) &#123; <span class="comment">// 包含对原型链的遍历</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Property name is "</span> + prop);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Property value is "</span> + object[prop]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for-in循环是用来遍历对象的，请不要用它来遍历数组。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的用法</span></span><br><span class="line"><span class="keyword">var</span> values = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ],</span><br><span class="line">    i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> values) &#123;</span><br><span class="line">    process(item[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><ul>
+<li>声明会被提升到当前作用域顶部。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> result = <span class="number">10</span> + value;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>上面代码的理解</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result;</span><br><span class="line">    <span class="keyword">var</span> value</span><br><span class="line"></span><br><span class="line">    result = <span class="number">10</span> + value;</span><br><span class="line">    value = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个函数得出的结果是NaN值。 </p>
+</li>
+<li><p>作者倾向的风格,把所有定义放在作用域开始部分，用逗号分隔，可以节省写<code>var</code>的字节。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingWithItems</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">10</span>,</span><br><span class="line">        result = value + <span class="number">10</span>,</span><br><span class="line">        i,</span><br><span class="line">        len;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>, len=items.length; i &lt; len; i++) &#123;</span><br><span class="line">        doSomething(items[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><ul>
+<li><p>函数声明也会被javaScript引擎提前。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>javaScript会把代码解释为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doSomething();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们应该先声明函数再使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingWithItems</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> i,len,</span><br><span class="line">        value = <span class="number">10</span>,</span><br><span class="line">        result = value + <span class="number">10</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 代码逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>, len=items.length; i &lt; len; i++) &#123;</span><br><span class="line">        doSomething(items[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另外，函数不应该出现在语句块之内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'hi'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'Yo'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为函数的声明会被提前，所以不管这里的条件满足与否，第二个同名的函数会把第一个函数覆盖。所以上面的代码不会按照我们的意图来执行。</p>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="函数调用间隔"><a href="#函数调用间隔" class="headerlink" title="函数调用间隔"></a>函数调用间隔</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line">doSomething(item);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法：看起来像一个语句块</span></span><br><span class="line">doSomething (item);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用来做对比的块语句</span></span><br><span class="line"><span class="keyword">while</span> (item) &#123;</span><br><span class="line">    <span class="comment">// 代码逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="立即调用的函数"><a href="#立即调用的函数" class="headerlink" title="立即调用的函数"></a>立即调用的函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般的写法</span></span><br><span class="line"><span class="keyword">var</span> doSomething = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的写法 : 被误解为函数的赋值，其实是被赋值为一个对象</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        message: <span class="string">"Hi"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="keyword">var</span> value = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        message: <span class="string">"Hi"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><ul>
+<li><code>use strict</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的写法 - 全局严格模式</span></span><br><span class="line"><span class="meta">"use strict"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果希望在多个函数中应用严格模式而不必谢很多行的话，可以使用立即执行函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为什么不要全局使用严格模式？<ul>
+<li>全局使用严格模式的情况下，其他文件中的（非严格模式下的）代码很可能会报错。</li>
+</ul>
+</li>
+</ul>
+<p><a href="#编程风格">返回顶部</a></p>
+<h3 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h3><ul>
+<li>相等的时候会进行类型转换</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 比较数字5和字符串5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> == <span class="string">"5"</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 比较数字25和十六进制的字符串25</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">25</span> == <span class="string">"0x19"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>发生强制转换的时候字符串会被转换为数字，类似使用<code>Number()</code>转换函数。它能正确转换十六进制的数字。所以第二个表达式是相等的。</p>
+</li>
+<li><p>布尔值和数字比较</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数字 1 和 true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字 0 和 false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="literal">false</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字 2 和 true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span> == <span class="literal">true</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果其中一个是对象另一个不是，则会先调用<code>valueOf()</code>方法得到原始类型再进行比较，如果没有<code>valueOf()</code>，则调用<code>toString()</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0x19"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object == <span class="number">25</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据ECMAScript标准规范的描述,<code>null</code>和<code>undefined</code>是相等的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于以上强制类型转换的原因，推荐不要使用<code>==</code>和<code>!=</code>，应当使用<code>===</code>和<code>!==</code>,它们不会类型转换只要类型不一样就返回<code>false</code></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 比较数字5和字符串5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> == <span class="string">"5"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> === <span class="string">"5"</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 比较数字25和十六进制的字符串25</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">25</span> == <span class="string">"0x19"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">25</span> === <span class="string">"0x19"</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字 1 和 true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> === <span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字 0 和 false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="literal">false</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> === <span class="literal">false</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字 2 和 true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span> == <span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span> === <span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0x19"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个对象和25</span></span><br><span class="line"><span class="built_in">console</span>.log(object == <span class="number">25</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(object === <span class="number">25</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// null和undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><a href="#编程风格">返回顶部</a></p>
+
+            <span style="float:right;" id="/2019/06/10/20190610-MaintainableJavaScript/" class="leancloud_visitors" data-flag-title="JavaScript_可维护_编写可维护的JavaScript">
+                <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
+                <i style="font-style:normal;" class="leancloud-visitors-count">1</i>:次
+            </span>
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "小沈"
+        },
+        "headline": "JavaScript_可维护_编写可维护的JavaScript",
+        "image": "http://shenxf.top",
+        "keywords": "JavaScript 可维护",
+        "genre": "文章",
+        "datePublished": "2019-06-10",
+        "dateCreated": "2019-06-10",
+        "dateModified": "2019-06-10",
+        "url": "http://shenxf.top/2019/06/10/20190610-MaintainableJavaScript/",
+        "description": "边看书边做笔记，这个仓库主要是参照《编写可维护的JavaScript》这本书，来总结自己的学习笔记。只是自己的总结，和书本不一样，如果觉得不错，你可以购买这本书自己研究。书本还涉及到JSLint，JSHint中的区别。实例代码从哪里取材，各种组织或公司的代码风格，并进行比较以及总结。对于某些写法的观点有时有些模棱两可，我自己的总结没有这些东西，更偏向与自己怎么写。
+最后，我写这篇东西也不容易，如果"
+        "wordCount": 5526
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/shen1986" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/05/29/20190529-seoStudy/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">seo学习</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            shenxf1986@qq.com
+        </div>
+        <a href="javascript:;" id="showLive2d" style="color: #006bde;text-decoration: none;">显示博客MM</a>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/06/10/20190610-MaintainableJavaScript/" class="title">JavaScript_可维护_编写可维护的JavaScript</a></p>
+                            <p class="item-date"><time datetime="2019-06-10T06:15:12.000Z" itemprop="datePublished">2019-06-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/29/20190529-seoStudy/" class="title">seo学习</a></p>
+                            <p class="item-date"><time datetime="2019-05-29T04:12:26.000Z" itemprop="datePublished">2019-05-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/16/20190516-vueSpeedUp/" class="title">Vue发布过程中遇到坑，以及webpack打包优化</a></p>
+                            <p class="item-date"><time datetime="2019-05-16T12:06:24.000Z" itemprop="datePublished">2019-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/网站开发/">网站开发</a></p>
+                            <p class="item-title"><a href="/2019/04/23/20190423-siteMemo/" class="title">前端网站整理</a></p>
+                            <p class="item-date"><time datetime="2019-04-23T05:56:47.000Z" itemprop="datePublished">2019-04-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/04/22/20190422-vscode/" class="title">使用vscode时，如何在.vue文件中使用html代码补全功能</a></p>
+                            <p class="item-date"><time datetime="2019-04-22T02:47:43.000Z" itemprop="datePublished">2019-04-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全/" style="font-size: 10px;">html代码补全</a> <a href="/tags/html代码补全功能/" style="font-size: 10px;">html代码补全功能</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo优化/" style="font-size: 10px;">seo优化</a> <a href="/tags/seo学习/" style="font-size: 10px;">seo学习</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端网站/" style="font-size: 10px;">前端网站</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/可维护/" style="font-size: 10px;">可维护</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/性能调优/" style="font-size: 10px;">性能调优</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a> <a href="/tags/网址/" style="font-size: 10px;">网址</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://ohs-sys.com">上海冈三华大计算机技术有限公司</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity: 0.8"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 小沈</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计代码-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http:/shenxf.top/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
+</script>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: 'mp',
+            avatar_cdn:  '',
+            visitor: true
+        });
+    </script>
+    <script src="/shenxf/js/valine.js"></script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
