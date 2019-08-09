@@ -1,0 +1,907 @@
+<!--
+ * @Description: 头部
+ * @Author: shenxf
+ * @Date: 2019-03-04 13:52:10
+ -->
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>微信小程序 | 小沈的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="微信小程序,微信,小程序">
+    
+    <meta name="description" content="微信小程序账号与工具在线文档：https://mp.weixin.qq.com/debug/wxadoc/dev/ 小程序开发者账号注册微信公众平台：https://mp.weixin.qq.com/ 小程序开发者账号注册：https://mp.weixin.qq.com/wxopen/waregister?action=step1 微信开发者工具微信开发者工具：https://mp.weixin">
+<meta name="keywords" content="微信小程序,微信,小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="http://shenxf.top/2019/08/09/20190809-wechat/index.html">
+<meta property="og:site_name" content="小沈的个人博客">
+<meta property="og:description" content="微信小程序账号与工具在线文档：https://mp.weixin.qq.com/debug/wxadoc/dev/ 小程序开发者账号注册微信公众平台：https://mp.weixin.qq.com/ 小程序开发者账号注册：https://mp.weixin.qq.com/wxopen/waregister?action=step1 微信开发者工具微信开发者工具：https://mp.weixin">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://shenxf.top/2019/08/09/20190809-wechat/weChatAppdemo.jpg">
+<meta property="og:updated_time" content="2019-08-09T08:44:04.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序">
+<meta name="twitter:description" content="微信小程序账号与工具在线文档：https://mp.weixin.qq.com/debug/wxadoc/dev/ 小程序开发者账号注册微信公众平台：https://mp.weixin.qq.com/ 小程序开发者账号注册：https://mp.weixin.qq.com/wxopen/waregister?action=step1 微信开发者工具微信开发者工具：https://mp.weixin">
+<meta name="twitter:image" content="http://shenxf.top/2019/08/09/20190809-wechat/weChatAppdemo.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="小沈的个人博客" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/live2d/css/live2d.css">
+    <link rel="stylesheet" href="/shenxf/css/valine.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?84db2c117432e9204ade2d7370b591ab";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8316273523263794",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <!-- 百度自动推送 -->
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">发表文章，自己的想法，学习分享</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/博客/">博客</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/网站开发/">网站开发</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20190809-wechat" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        微信小程序
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/08/09/20190809-wechat/" class="article-date">
+            <time datetime="2019-08-09T06:15:12.000Z" itemprop="datePublished">2019-08-09</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/小程序/">小程序</a>, <a class="tag-link" href="/tags/微信/">微信</a>, <a class="tag-link" href="/tags/微信小程序/">微信小程序</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="微信小程序账号与工具"><a href="#微信小程序账号与工具" class="headerlink" title="微信小程序账号与工具"></a>微信小程序账号与工具</h2><p>在线文档：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+<h3 id="小程序开发者账号注册"><a href="#小程序开发者账号注册" class="headerlink" title="小程序开发者账号注册"></a>小程序开发者账号注册</h3><p>微信公众平台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></p>
+<p>小程序开发者账号注册：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a></p>
+<h3 id="微信开发者工具"><a href="#微信开发者工具" class="headerlink" title="微信开发者工具"></a>微信开发者工具</h3><p>微信开发者工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html</a></p>
+<h3 id="小程序在线Demo"><a href="#小程序在线Demo" class="headerlink" title="小程序在线Demo"></a>小程序在线Demo</h3><p><img src="/2019/08/09/20190809-wechat/weChatAppdemo.jpg"></p>
+<h2 id="微信小程序文件结构"><a href="#微信小程序文件结构" class="headerlink" title="微信小程序文件结构"></a>微信小程序文件结构</h2><h3 id="主体文件结构"><a href="#主体文件结构" class="headerlink" title="主体文件结构"></a>主体文件结构</h3><p>主体部分由三个文件组成，必须放在项目的根目录，如下：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>必填</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html" target="_blank" rel="noopener">app.js</a></td>
+<td>是</td>
+<td>小程序逻辑</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html" target="_blank" rel="noopener">app.json</a></td>
+<td>是</td>
+<td>小程序公共设置</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxss.html" target="_blank" rel="noopener">app.wxss</a></td>
+<td>否</td>
+<td>小程序公共样式表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="页面文件结构"><a href="#页面文件结构" class="headerlink" title="页面文件结构"></a>页面文件结构</h3><p>页面由四个文件组成，分别是：</p>
+<table>
+<thead>
+<tr>
+<th>文件类型</th>
+<th>必填</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html" target="_blank" rel="noopener">js</a></td>
+<td>是</td>
+<td>页面逻辑 ( 微信小程序没有window和document对象 )</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/" target="_blank" rel="noopener">wxml</a></td>
+<td>是</td>
+<td>页面结构  ( XML语法，不是HTML语法 )</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxss.html" target="_blank" rel="noopener">wxss</a></td>
+<td>否</td>
+<td>页面样式表 ( <strong>拓展了rpx尺寸单位，微信专属响应式像素</strong> )</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pagejson" target="_blank" rel="noopener">json</a></td>
+<td>否</td>
+<td>页面配置  ( 不能写注释，否则编译报错 )</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2019/08/09/20190809-wechat/fileTree.png"></p>
+<h2 id="微信小程序配置"><a href="#微信小程序配置" class="headerlink" title="微信小程序配置"></a>微信小程序配置</h2><h3 id="app-json-配置项列表"><a href="#app-json-配置项列表" class="headerlink" title="app.json 配置项列表"></a>app.json 配置项列表</h3><blockquote>
+<p><code>app.json</code>文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages" target="_blank" rel="noopener">pages</a></td>
+<td>String Array</td>
+<td>是</td>
+<td>设置页面路径</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#window" target="_blank" rel="noopener">window</a></td>
+<td>Object</td>
+<td>否</td>
+<td>设置默认页面的窗口表现</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar" target="_blank" rel="noopener">tabBar</a></td>
+<td>Object</td>
+<td>否</td>
+<td>设置底部 tab 的表现</td>
+</tr>
+<tr>
+<td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#debug" target="_blank" rel="noopener">debug</a></td>
+<td>Boolean</td>
+<td>否</td>
+<td>设置是否开启 debug 模式</td>
+</tr>
+</tbody>
+</table>
+<h4 id="window配置"><a href="#window配置" class="headerlink" title="window配置"></a>window配置</h4><blockquote>
+<p>用于设置小程序的状态栏、导航条、标题、窗口背景色。</p>
+<p>注意：页面的<code>.json</code>只能设置 <code>window</code> 相关的配置项，以决定本页面的窗口表现，所以无需写 <code>window</code> 这个键。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>navigationBarBackgroundColor</td>
+<td>HexColor</td>
+<td>#000000</td>
+<td>导航栏背景颜色，如”#000000”</td>
+</tr>
+<tr>
+<td>navigationBarTextStyle</td>
+<td>String</td>
+<td>white</td>
+<td>导航栏标题颜色，仅支持 black/white</td>
+</tr>
+<tr>
+<td>navigationBarTitleText</td>
+<td>String</td>
+<td></td>
+<td>导航栏标题文字内容</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>HexColor</td>
+<td>#ffffff</td>
+<td>窗口的背景色</td>
+</tr>
+<tr>
+<td>backgroundTextStyle</td>
+<td>String</td>
+<td>dark</td>
+<td>下拉背景字体、loading 图的样式，仅支持 dark/light</td>
+</tr>
+<tr>
+<td>enablePullDownRefresh</td>
+<td>Boolean</td>
+<td>false</td>
+<td>是否开启下拉刷新，详见<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#页面相关事件处理函数" target="_blank" rel="noopener">页面相关事件处理函数</a>。</td>
+</tr>
+<tr>
+<td>onReachBottomDistance</td>
+<td>Number</td>
+<td>50</td>
+<td>页面上拉触底事件触发时距页面底部距离，单位为px</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2019/08/09/20190809-wechat/config.jpg"></p>
+<h4 id="tabBar"><a href="#tabBar" class="headerlink" title="tabBar"></a><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar" target="_blank" rel="noopener">tabBar</a></h4><p>如果小程序是一个多 tab 应用（客户端窗口的底部或顶部有 tab 栏可以切换页面），可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页面。</p>
+<p><strong>Tip：</strong></p>
+<ol>
+<li>当设置 position 为 top 时，将不会显示 icon。</li>
+<li>tabBar 中的 list 是一个数组，<strong>只能配置最少2个、最多5个 tab</strong>，tab 按数组的顺序排序。</li>
+</ol>
+<p><strong>属性说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 上的文字默认颜色</td>
+</tr>
+<tr>
+<td>selectedColor</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 上的文字选中时的颜色</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 的背景色</td>
+</tr>
+<tr>
+<td>borderStyle</td>
+<td>String</td>
+<td>否</td>
+<td>black</td>
+<td>tabbar上边框的颜色， 仅支持 black/white</td>
+</tr>
+<tr>
+<td>list</td>
+<td>Array</td>
+<td>是</td>
+<td></td>
+<td>tab 的列表，详见 list 属性说明，最少2个、最多5个 tab</td>
+</tr>
+<tr>
+<td>position</td>
+<td>String</td>
+<td>否</td>
+<td>bottom</td>
+<td>可选值 bottom、top，设置成top是无图标</td>
+</tr>
+</tbody>
+</table>
+<p>其中 list 接受一个数组，数组中的每个项都是一个对象，其属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pagePath</td>
+<td>String</td>
+<td>是</td>
+<td>页面路径，必须在 pages 中先定义</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>是</td>
+<td>tab 上按钮文字</td>
+</tr>
+<tr>
+<td>iconPath</td>
+<td>String</td>
+<td>否</td>
+<td>图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效</td>
+</tr>
+<tr>
+<td>selectedIconPath</td>
+<td>String</td>
+<td>否</td>
+<td>选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效</td>
+</tr>
+</tbody>
+</table>
+<p>图示：</p>
+<p><img src="/2019/08/09/20190809-wechat/tabBar.png"></p>
+<h2 id="微信小程序组件-标签"><a href="#微信小程序组件-标签" class="headerlink" title="微信小程序组件(标签)"></a>微信小程序组件(标签)</h2><p>组件文档：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/component/" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/dev/component/</a></p>
+<h3 id="常用布局标签"><a href="#常用布局标签" class="headerlink" title="常用布局标签"></a>常用布局标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span>				相当于    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">text</span>&gt;</span>				相当于    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span>				相当于    <span class="tag">&lt;<span class="name">img</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">navigator</span>&gt;</span><span class="tag">&lt;/<span class="name">navigator</span>&gt;</span>		相当于    <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span>				区块标签，不会渲染到页面</span><br></pre></td></tr></table></figure>
+<p><strong>注意：image组件默认宽度300px、高度225px，很多时候我们都不需要这个默认宽高，记得手动设置宽高</strong></p>
+<h3 id="常用表单标签"><a href="#常用表单标签" class="headerlink" title="常用表单标签"></a>常用表单标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> /&gt;</span>				</span><br><span class="line"><span class="tag">&lt;<span class="name">checkbox</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">radio</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="轮播图组件"><a href="#轮播图组件" class="headerlink" title="轮播图组件"></a>轮播图组件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">swiper</span> <span class="attr">indicator-dots</span>=<span class="string">"是否显示面板指示点"</span> <span class="attr">autoplay</span>=<span class="string">"是否自动切换"</span> <span class="attr">interval</span>=<span class="string">"自动切换时间间隔"</span> <span class="attr">duration</span>=<span class="string">"滑动动画时长"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">swiper-item</span>&gt;</span></span><br><span class="line">      	<span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">"图片路径1"</span> <span class="attr">width</span>=<span class="string">"375"</span> <span class="attr">height</span>=<span class="string">"150"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">swiper-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">swiper-item</span>&gt;</span></span><br><span class="line">      	<span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">"图片路径2"</span> <span class="attr">width</span>=<span class="string">"375"</span> <span class="attr">height</span>=<span class="string">"150"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">swiper-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">swiper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>探索：实现无缝轮播怎么办？</p>
+<h2 id="微信小程序页面函数"><a href="#微信小程序页面函数" class="headerlink" title="微信小程序页面函数"></a>微信小程序页面函数</h2><h3 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  <span class="comment">/** 页面的初始数据 */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/** 生命周期函数--监听页面加载 */</span></span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/** 生命周期函数--监听页面初次渲染完成 */</span></span><br><span class="line">  onReady: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/** 生命周期函数--监听页面显示 */</span></span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/** 生命周期函数--监听页面隐藏 */</span></span><br><span class="line">  onHide: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/** 生命周期函数--监听页面卸载 */</span></span><br><span class="line">  onUnload: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="页面相关事件处理函数"><a href="#页面相关事件处理函数" class="headerlink" title="页面相关事件处理函数"></a>页面相关事件处理函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 页面相关事件处理函数--监听用户下拉动作 */</span></span><br><span class="line"> onPullDownRefresh: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">/** 页面上拉触底事件的处理函数 */</span></span><br><span class="line"> onReachBottom: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">/** 用户点击右上角分享 */</span></span><br><span class="line"> onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="WXML-布局"><a href="#WXML-布局" class="headerlink" title="WXML  布局"></a>WXML  布局</h2><h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/data.html" target="_blank" rel="noopener">数据绑定</a></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span> &#123;&#123;message&#125;&#125; <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello MINA!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h4><ol>
+<li><strong>花括号和引号之间不能有空格</strong></li>
+<li><strong>不要直接写 checked=”false”，其计算结果是一个字符串，转成 boolean 类型后代表真值。</strong></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">checkbox</span> <span class="attr">checked</span>=<span class="string">"false"</span>&gt;</span> <span class="tag">&lt;/<span class="name">checkbox</span>&gt;</span>					其计算结果是一个字符串，转成 boolean 类型后变成了 true</span><br><span class="line"><span class="tag">&lt;<span class="name">checkbox</span> <span class="attr">checked</span>=<span class="string">"&#123;&#123;false&#125;&#125;"</span>&gt;</span> <span class="tag">&lt;/<span class="name">checkbox</span>&gt;</span>				正确写法</span><br></pre></td></tr></table></figure>
+<h3 id="列表渲染-wx-for"><a href="#列表渲染-wx-for" class="headerlink" title="列表渲染  wx:for"></a><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/list.html" target="_blank" rel="noopener">列表渲染</a>  wx:for</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;array&#125;&#125;"</span>&gt;</span> &#123;&#123;item&#125;&#125; <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="wx-key-提高列表渲染时排序的效率"><a href="#wx-key-提高列表渲染时排序的效率" class="headerlink" title="wx:key   提高列表渲染时排序的效率"></a>wx:key   提高列表渲染时排序的效率</h4><p><code>wx:key</code> 的值以两种形式提供</p>
+<ol>
+<li>字符串，代表在 for 循环的 array 中 item 的某个 property，该 property 的值需要是列表中唯一的字符串或数字，且不能动态改变。</li>
+<li>保留关键字 <code>*this</code> 代表在 for 循环中的 item 本身，这种表示需要 item 本身是一个唯一的字符串或者数字。</li>
+</ol>
+<h3 id="条件渲染-wx-if-wx-else-wx-elif"><a href="#条件渲染-wx-if-wx-else-wx-elif" class="headerlink" title="条件渲染  wx:if   wx:else   wx:elif"></a><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/conditional.html" target="_blank" rel="noopener">条件渲染</a>  wx:if   wx:else   wx:elif</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;length &gt;= 80&#125;&#125;"</span>&gt;</span> 优秀 <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:elif</span>=<span class="string">"&#123;&#123;length &gt;= 60&#125;&#125;"</span>&gt;</span> 良好 <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:else</span>&gt;</span> 加油 <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    length: <span class="string">'95'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="wx-if-与-hidden-区别"><a href="#wx-if-与-hidden-区别" class="headerlink" title="wx:if 与 hidden 区别"></a><code>wx:if</code> 与 <code>hidden</code> 区别</h4><p> <code>wx:if</code>  是否渲染， <code>hidden</code>  是否隐藏。</p>
+<p>一般来说，<code>wx:if</code> 有更高的切换消耗而 <code>hidden</code> 有更高的初始渲染消耗。</p>
+<p>因此，如果需要频繁切换的情景下，用 <code>hidden</code> 更好。</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">事件</a></h3><ul>
+<li>事件对象可以获取额外信息，如 id, dataset(自定义属性集合), touches(触摸点坐标)。</li>
+</ul>
+<h4 id="事件绑定和冒泡"><a href="#事件绑定和冒泡" class="headerlink" title="事件绑定和冒泡"></a>事件绑定和冒泡</h4><ol>
+<li>冒泡事件    bind事件类型        如     <code>bindtap</code>   <code>bindlongpress</code></li>
+<li>非冒泡事件    catch事件类型    如  <code>catchtap</code>   <code>catchlongpress</code></li>
+</ol>
+<h4 id="常用事件类型"><a href="#常用事件类型" class="headerlink" title="常用事件类型"></a>常用事件类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tap</td>
+<td>手指触摸后马上离开</td>
+</tr>
+<tr>
+<td>longpress</td>
+<td>手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">data-index</span>=<span class="string">"自定义属性"</span> <span class="attr">bindtap</span>=<span class="string">"tapHandle"</span>&gt;</span> 点我触发事件 <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  tapHandle: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="事件传参注意"><a href="#事件传参注意" class="headerlink" title="事件传参注意"></a>事件传参注意</h4><p>小程序绑定事件只能写函数名称，不能通过括号方式传参。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">bindtap</span>=<span class="string">"tapHandle(520)"</span>&gt;</span> 点我触发事件 <span class="tag">&lt;/<span class="name">view</span>&gt;</span>								错误，事件不能触发</span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">data-index</span>=<span class="string">"520"</span> <span class="attr">bindtap</span>=<span class="string">"tapHandle"</span>&gt;</span> 点我触发事件 <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  tapHandle: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log( event.target.dataset.index );  <span class="comment">// 输出标签自定义属性上的index值</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="WXS-脚本"><a href="#WXS-脚本" class="headerlink" title="WXS  脚本"></a>WXS  脚本</h3><p>WXS（WeiXin Script）是小程序的一套脚本语言，功能类似<code>&lt;script&gt;</code>标签，用于在视图层定义函数(比较少用)。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">wxs</span> <span class="attr">module</span>=<span class="string">"foo"</span>&gt;</span></span><br><span class="line">var sum = function(a,b)&#123;</span><br><span class="line">  return a+b;</span><br><span class="line">&#125;;</span><br><span class="line">// 这里可以导出一个对象，这个对象可以直接在界面上使用 </span><br><span class="line">module.exports.sum = sum;</span><br><span class="line"><span class="tag">&lt;/<span class="name">wxs</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span> &#123;&#123;foo.sum&#125;&#125; <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="WXSS-样式"><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h2><p>WXSS(WeiXin Style Sheets)是一套样式语言。</p>
+<p>与 CSS 相比，WXSS 扩展以下2个特性：</p>
+<ul>
+<li>尺寸单位      rpx ( responsive pixel 响应式像素) </li>
+<li>样式导入      @import  “样式表路径”;</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shift + alt + F</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>ctrl + P</td>
+<td>跳到文件</td>
+</tr>
+<tr>
+<td>ctrl + E</td>
+<td>跳到最近文件</td>
+</tr>
+</tbody>
+</table>
+
+            <span style="float:right;" id="/2019/08/09/20190809-wechat/" class="leancloud_visitors" data-flag-title="微信小程序">
+                <em style="font-style:normal;" class="post-meta-item-text">阅读量 </em>
+                <i style="font-style:normal;" class="leancloud-visitors-count">1</i>:次
+            </span>
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "小沈"
+        },
+        "headline": "微信小程序",
+        "image": "http://shenxf.top/2019/08/09/20190809-wechat/weChatAppdemo.jpg",
+        "keywords": "微信小程序 微信 小程序",
+        "genre": "文章",
+        "datePublished": "2019-08-09",
+        "dateCreated": "2019-08-09",
+        "dateModified": "2019-08-09",
+        "url": "http://shenxf.top/2019/08/09/20190809-wechat/",
+        "description": "微信小程序账号与工具在线文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
+小程序开发者账号注册微信公众平台：https://mp.weixin.qq.com/
+小程序开发者账号注册：https://mp.weixin.qq.com/wxopen/waregister?action=step1
+微信开发者工具微信开发者工具：https://mp.weixin"
+        "wordCount": 1159
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/shen1986" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/06/10/20190610-MaintainableJavaScript/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">JavaScript_可维护_编写可维护的JavaScript</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            shenxf1986@qq.com
+        </div>
+        <a href="javascript:;" id="showLive2d" style="color: #006bde;text-decoration: none;">显示博客MM</a>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/08/09/20190809-wechat/" class="title">微信小程序</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T06:15:12.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/06/10/20190610-MaintainableJavaScript/" class="title">JavaScript_可维护_编写可维护的JavaScript</a></p>
+                            <p class="item-date"><time datetime="2019-06-10T06:15:12.000Z" itemprop="datePublished">2019-06-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/29/20190529-seoStudy/" class="title">seo学习</a></p>
+                            <p class="item-date"><time datetime="2019-05-29T04:12:26.000Z" itemprop="datePublished">2019-05-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2019/05/16/20190516-vueSpeedUp/" class="title">Vue发布过程中遇到坑，以及webpack打包优化</a></p>
+                            <p class="item-date"><time datetime="2019-05-16T12:06:24.000Z" itemprop="datePublished">2019-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/网站开发/">网站开发</a></p>
+                            <p class="item-title"><a href="/2019/04/23/20190423-siteMemo/" class="title">前端网站整理</a></p>
+                            <p class="item-date"><time datetime="2019-04-23T05:56:47.000Z" itemprop="datePublished">2019-04-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站开发/">网站开发</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Google-AdSense/" style="font-size: 10px;">Google AdSense</a> <a href="/tags/Google-广告/" style="font-size: 10px;">Google 广告</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Mixin/" style="font-size: 10px;">Mixin</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/commond/" style="font-size: 10px;">commond</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html代码补全/" style="font-size: 10px;">html代码补全</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/less环境安装/" style="font-size: 10px;">less环境安装</a> <a href="/tags/less语法/" style="font-size: 10px;">less语法</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo优化/" style="font-size: 10px;">seo优化</a> <a href="/tags/seo学习/" style="font-size: 10px;">seo学习</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/入门系列1/" style="font-size: 10px;">入门系列1</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端网站/" style="font-size: 10px;">前端网站</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/可维护/" style="font-size: 10px;">可维护</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/性能调优/" style="font-size: 10px;">性能调优</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/百度主动提交链接/" style="font-size: 10px;">百度主动提交链接</a> <a href="/tags/网址/" style="font-size: 10px;">网址</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://ohs-sys.com">上海冈三华大计算机技术有限公司</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity: 0.8"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 小沈</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计代码-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http:/shenxf.top/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
+</script>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'X0udrGRm7uJQ773E12E00My0-gzGzoHsz',
+            app_key: '3J8p17IdN2HDN1U0zyUMeUj6',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            pageSize: '10',
+            avatar: 'mp',
+            avatar_cdn:  '',
+            visitor: true
+        });
+    </script>
+    <script src="/shenxf/js/valine.js"></script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
